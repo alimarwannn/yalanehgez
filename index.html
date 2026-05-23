@@ -1,0 +1,1288 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yalanehgez (يلا نحجز) — WhatsApp Booking Automation for Egyptian Businesses</title>
+  <meta name="description" content="Yalanehgez automates your entire booking workflow over WhatsApp using AI. Built for Egyptian restaurants, beach clubs, nightlife venues, clinics, and any booking-based business.">
+  <meta property="og:title" content="Yalanehgez — WhatsApp Booking Automation">
+  <meta property="og:description" content="Your customers message. The AI handles the conversation. Bookings land in your records — automatically.">
+  <meta property="og:type" content="website">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&family=Cairo:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ─── Reset & Base ─────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Jost', sans-serif;
+      font-weight: 400;
+      color: #1C1C1E;
+      background: #FFFFFF;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── Design Tokens ────────────────────────────────────────── */
+    :root {
+      --white:        #FFFFFF;
+      --cream:        #FAF8F3;
+      --cream-mid:    #F0EBE0;
+      --charcoal:     #1C1C1E;
+      --charcoal-mid: #3A3A3C;
+      --gold:         #B8924A;
+      --gold-light:   #CDA96E;
+      --gold-pale:    #F8F1E3;
+      --green-wa:     #25D366;
+      --green-wa-dk:  #1DA851;
+      --gray:         #6C6C70;
+      --border:       #E8E2D8;
+    }
+
+    /* ─── Typography ───────────────────────────────────────────── */
+    h1, h2, h3 {
+      font-family: 'Cormorant Garamond', serif;
+      line-height: 1.12;
+      letter-spacing: -0.02em;
+    }
+    h1 { font-size: clamp(44px, 5.5vw, 70px); font-weight: 300; }
+    h2 { font-size: clamp(32px, 4vw, 54px); font-weight: 300; }
+    h3 { font-size: 22px; font-weight: 600; }
+    h1 em, h2 em { font-style: italic; color: var(--gold); }
+
+    /* ─── Layout ───────────────────────────────────────────────── */
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    /* ─── Navigation ───────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      background: rgba(255,255,255,0.94);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+    nav .container {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      text-decoration: none;
+    }
+    .nav-logo-en {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--charcoal);
+      letter-spacing: -0.01em;
+    }
+    .nav-logo-ar {
+      font-family: 'Cairo', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--gold);
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--gray);
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--charcoal); }
+
+    /* ─── Buttons ──────────────────────────────────────────────── */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--charcoal);
+      color: #fff;
+      text-decoration: none;
+      padding: 10px 22px;
+      border-radius: 6px;
+      font-family: 'Jost', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      transition: background 0.2s, transform 0.15s;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-primary:hover { background: #000; transform: translateY(-1px); }
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: var(--charcoal);
+      text-decoration: none;
+      padding: 10px 22px;
+      border-radius: 6px;
+      font-family: 'Jost', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      border: 1.5px solid var(--border);
+      transition: border-color 0.2s, transform 0.15s;
+    }
+    .btn-outline:hover { border-color: var(--charcoal); transform: translateY(-1px); }
+    .btn-wa {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: var(--green-wa);
+      color: white;
+      text-decoration: none;
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-family: 'Jost', sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      width: 100%;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-wa:hover { background: var(--green-wa-dk); transform: translateY(-1px); }
+
+    /* ─── Section Labels ───────────────────────────────────────── */
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+    .section-label::before {
+      content: '';
+      width: 22px;
+      height: 1.5px;
+      background: var(--gold);
+    }
+    .section-intro {
+      font-size: 17px;
+      color: var(--gray);
+      line-height: 1.75;
+      max-width: 580px;
+    }
+
+    /* ─────────────────────────────────────────────────────────── */
+    /* HERO                                                        */
+    /* ─────────────────────────────────────────────────────────── */
+    #hero {
+      padding: 148px 0 100px;
+      background: var(--white);
+      overflow: hidden;
+      position: relative;
+    }
+    .hero-watermark {
+      position: absolute;
+      top: 50%;
+      right: -40px;
+      transform: translateY(-50%);
+      font-family: 'Cairo', sans-serif;
+      font-size: 260px;
+      font-weight: 700;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(184,146,74,0.07);
+      white-space: nowrap;
+      pointer-events: none;
+      user-select: none;
+      line-height: 1;
+    }
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 24px;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      width: 22px;
+      height: 1.5px;
+      background: var(--gold);
+    }
+    .hero-arabic {
+      font-family: 'Cairo', sans-serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--charcoal-mid);
+      margin: 10px 0 28px;
+      direction: rtl;
+      text-align: left;
+    }
+    .hero-desc {
+      font-size: 17px;
+      color: var(--gray);
+      line-height: 1.75;
+      margin-bottom: 40px;
+      max-width: 460px;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    /* ─── WhatsApp Phone Mockup ────────────────────────────────── */
+    .phone-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .phone-mockup {
+      width: 300px;
+      background: #1C1C1E;
+      border-radius: 36px;
+      padding: 12px;
+      box-shadow:
+        0 48px 96px rgba(0,0,0,0.18),
+        0 12px 28px rgba(0,0,0,0.1);
+    }
+    .phone-screen {
+      background: #ECE5DD;
+      border-radius: 26px;
+      overflow: hidden;
+    }
+    .wa-header {
+      background: #075E54;
+      padding: 12px 14px 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .wa-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cairo', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      color: white;
+      flex-shrink: 0;
+    }
+    .wa-name { color: white; font-size: 14px; font-weight: 600; }
+    .wa-status { color: rgba(255,255,255,0.65); font-size: 11px; margin-top: 1px; }
+    .wa-chat {
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      min-height: 370px;
+    }
+    .wa-date-divider {
+      text-align: center;
+      font-size: 11px;
+      color: #6e7b7b;
+      background: rgba(255,255,255,0.55);
+      padding: 3px 10px;
+      border-radius: 8px;
+      align-self: center;
+      margin: 4px 0;
+    }
+    .wa-bubble {
+      max-width: 82%;
+      padding: 7px 11px;
+      border-radius: 8px;
+      font-size: 13px;
+      line-height: 1.45;
+      color: #111;
+    }
+    .wa-bubble.from-user {
+      background: #DCF8C6;
+      align-self: flex-end;
+      border-radius: 8px 0 8px 8px;
+    }
+    .wa-bubble.from-bot {
+      background: white;
+      align-self: flex-start;
+      border-radius: 0 8px 8px 8px;
+    }
+    .wa-time {
+      font-size: 10px;
+      color: rgba(0,0,0,0.38);
+      text-align: right;
+      margin-top: 3px;
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 1; }
+    }
+    .dot {
+      display: inline-block;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: #999;
+      animation: blink 1.3s ease-in-out infinite;
+      margin: 0 1px;
+    }
+    .dot:nth-child(2) { animation-delay: 0.2s; }
+    .dot:nth-child(3) { animation-delay: 0.4s; }
+
+    /* ─────────────────────────────────────────────────────────── */
+    /* ABOUT                                                       */
+    /* ─────────────────────────────────────────────────────────── */
+    #about { padding: 100px 0; background: var(--cream); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+      margin-top: 60px;
+    }
+    .about-body {
+      font-size: 16px;
+      color: var(--gray);
+      line-height: 1.8;
+    }
+    .about-body p + p { margin-top: 16px; }
+    .about-stat-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-top: 40px;
+      border-top: 1px solid var(--border);
+      padding-top: 36px;
+    }
+    .about-stat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 48px;
+      font-weight: 300;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .about-stat-label {
+      font-size: 12px;
+      color: var(--gray);
+      line-height: 1.5;
+      margin-top: 6px;
+    }
+    .feature-list {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .feature-item {
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+    }
+    .feature-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: var(--gold-pale);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+    .feature-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--charcoal);
+      margin-bottom: 5px;
+    }
+    .feature-desc { font-size: 14px; color: var(--gray); line-height: 1.65; }
+
+    /* ─────────────────────────────────────────────────────────── */
+    /* WHO IT'S FOR                                                */
+    /* ─────────────────────────────────────────────────────────── */
+    #for { padding: 100px 0; background: var(--white); }
+    .for-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 60px;
+    }
+    .for-card {
+      background: var(--cream);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 28px 22px;
+      cursor: default;
+      transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+    }
+    .for-card:hover {
+      border-color: var(--gold);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 36px rgba(184,146,74,0.1);
+    }
+    .for-icon { font-size: 28px; margin-bottom: 14px; }
+    .for-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--charcoal);
+      margin-bottom: 8px;
+    }
+    .for-desc { font-size: 13px; color: var(--gray); line-height: 1.6; }
+
+    /* ─────────────────────────────────────────────────────────── */
+    /* HOW IT WORKS                                                */
+    /* ─────────────────────────────────────────────────────────── */
+    #how { padding: 100px 0; background: var(--charcoal); }
+    #how .section-label { color: var(--gold-light); }
+    #how .section-label::before { background: var(--gold-light); }
+    #how h2 { color: white; }
+    #how .section-intro { color: rgba(255,255,255,0.55); }
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      margin-top: 72px;
+      position: relative;
+    }
+    .steps::before {
+      content: '';
+      position: absolute;
+      top: 39px;
+      left: calc(33.33% / 2 + 20px);
+      right: calc(33.33% / 2 + 20px);
+      height: 1px;
+      background: linear-gradient(to right, rgba(184,146,74,0.8), rgba(184,146,74,0.2), rgba(184,146,74,0.8));
+    }
+    .step { padding: 0 36px; text-align: center; }
+    .step-circle {
+      width: 78px;
+      height: 78px;
+      border-radius: 50%;
+      border: 1px solid rgba(184,146,74,0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 32px;
+      background: var(--charcoal);
+      position: relative;
+    }
+    .step-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 30px;
+      font-weight: 300;
+      color: var(--gold);
+    }
+    .step h3 { color: white; margin-bottom: 14px; }
+    .step p { font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.75; }
+
+    /* ─────────────────────────────────────────────────────────── */
+    /* WHY WHATSAPP                                                */
+    /* ─────────────────────────────────────────────────────────── */
+    #why { padding: 100px 0; background: var(--cream); }
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: center;
+      margin-top: 60px;
+    }
+    .why-reasons { display: flex; flex-direction: column; gap: 20px; }
+    .why-card {
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 22px;
+      transition: border-color 0.2s;
+    }
+    .why-card:hover { border-color: var(--gold-light); }
+    .why-icon { font-size: 22px; flex-shrink: 0; margin-top: 2px; }
+    .why-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 19px;
+      font-weight: 600;
+      color: var(--charcoal);
+      margin-bottom: 5px;
+    }
+    .why-desc { font-size: 13px; color: var(--gray); line-height: 1.65; }
+    .wa-info-box {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 44px;
+      text-align: center;
+    }
+    .wa-logo-circle {
+      width: 68px;
+      height: 68px;
+      background: var(--green-wa);
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 28px;
+    }
+    .wa-big-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 64px;
+      font-weight: 300;
+      color: var(--charcoal);
+      line-height: 1;
+    }
+    .wa-big-label { font-size: 14px; color: var(--gray); margin-top: 8px; line-height: 1.5; }
+    .wa-divider { width: 40px; height: 1px; background: var(--border); margin: 28px auto; }
+
+    /* ─────────────────────────────────────────────────────────── */
+    /* CONTACT                                                     */
+    /* ─────────────────────────────────────────────────────────── */
+    #contact { padding: 100px 0; background: var(--white); }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      margin-top: 60px;
+    }
+    .contact-desc {
+      font-size: 16px;
+      color: var(--gray);
+      line-height: 1.8;
+      margin-bottom: 36px;
+    }
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .contact-item:first-of-type { border-top: 1px solid var(--border); }
+    .contact-item-icon { font-size: 18px; margin-top: 2px; }
+    .contact-item-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 3px;
+    }
+    .contact-item-val { font-size: 15px; color: var(--gray); }
+    .form-group { margin-bottom: 18px; }
+    .form-group label {
+      display: block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 8px;
+    }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      font-family: 'Jost', sans-serif;
+      font-size: 15px;
+      color: var(--charcoal);
+      background: var(--cream);
+      outline: none;
+      transition: border-color 0.2s;
+      appearance: none;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus { border-color: var(--gold); background: white; }
+    .form-group textarea { min-height: 110px; resize: vertical; }
+
+    /* ─────────────────────────────────────────────────────────── */
+    /* PRIVACY POLICY                                              */
+    /* ─────────────────────────────────────────────────────────── */
+    #privacy { padding: 100px 0; background: var(--cream); }
+    .privacy-wrap { max-width: 740px; margin-top: 48px; }
+    .privacy-updated {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 36px;
+    }
+    .privacy-wrap h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--charcoal);
+      margin: 40px 0 14px;
+    }
+    .privacy-wrap h3:first-of-type { margin-top: 0; }
+    .privacy-wrap p {
+      font-size: 15px;
+      color: var(--gray);
+      line-height: 1.8;
+      margin-bottom: 12px;
+    }
+    .privacy-wrap ul {
+      margin: 10px 0 14px 22px;
+    }
+    .privacy-wrap ul li {
+      font-size: 15px;
+      color: var(--gray);
+      line-height: 1.8;
+      margin-bottom: 6px;
+    }
+    .privacy-wrap strong { color: var(--charcoal-mid); font-weight: 500; }
+
+    /* ─────────────────────────────────────────────────────────── */
+    /* FOOTER                                                      */
+    /* ─────────────────────────────────────────────────────────── */
+    footer {
+      background: var(--charcoal);
+      padding: 48px 0;
+    }
+    footer .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .footer-brand-en {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-weight: 600;
+      color: white;
+    }
+    .footer-brand-ar {
+      font-family: 'Cairo', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--gold);
+      margin-top: 3px;
+    }
+    .footer-right {
+      font-size: 13px;
+      color: rgba(255,255,255,0.45);
+      text-align: right;
+      line-height: 1.75;
+    }
+    .footer-right a { color: var(--gold-light); text-decoration: none; }
+    .footer-right a:hover { text-decoration: underline; }
+
+    /* ─────────────────────────────────────────────────────────── */
+    /* SCROLL REVEAL                                               */
+    /* ─────────────────────────────────────────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .anim { opacity: 0; transform: translateY(22px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .anim.visible { opacity: 1; transform: translateY(0); }
+
+    /* Hero entry animations */
+    .hero-anim-1 { animation: fadeUp 0.7s 0.05s ease both; }
+    .hero-anim-2 { animation: fadeUp 0.7s 0.2s  ease both; }
+    .hero-anim-3 { animation: fadeUp 0.7s 0.35s ease both; }
+    .hero-anim-4 { animation: fadeUp 0.7s 0.5s  ease both; }
+
+    /* ─────────────────────────────────────────────────────────── */
+    /* RESPONSIVE                                                  */
+    /* ─────────────────────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .for-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .container { padding: 0 20px; }
+      #hero { padding: 130px 0 72px; }
+      .hero-inner { grid-template-columns: 1fr; gap: 48px; }
+      .phone-mockup { width: 260px; }
+      .hero-watermark { display: none; }
+      .about-grid { grid-template-columns: 1fr; gap: 48px; }
+      .steps { grid-template-columns: 1fr; }
+      .steps::before { display: none; }
+      .step { padding: 0; margin-bottom: 40px; text-align: left; }
+      .step-circle { margin: 0 0 20px; }
+      .why-grid { grid-template-columns: 1fr; gap: 48px; }
+      .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+      .nav-links { display: none; }
+      footer .container { flex-direction: column; gap: 20px; text-align: center; }
+      .footer-right { text-align: center; }
+    }
+    @media (max-width: 480px) {
+      .for-grid { grid-template-columns: 1fr; }
+      .about-stat-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- NAVIGATION                                                  -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<nav>
+  <div class="container">
+    <a href="#" class="nav-logo">
+      <span class="nav-logo-en">Yalanehgez</span>
+      <span class="nav-logo-ar">يلا نحجز</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#for">Who It's For</a></li>
+      <li><a href="#how">How It Works</a></li>
+      <li><a href="#privacy">Privacy</a></li>
+    </ul>
+    <a href="#contact" class="btn-primary">Book a Demo</a>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- HERO                                                        -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section id="hero">
+  <div class="hero-watermark" aria-hidden="true">يلا نحجز</div>
+  <div class="container">
+    <div class="hero-inner">
+
+      <!-- Left: Copy -->
+      <div>
+        <p class="hero-eyebrow hero-anim-1">WhatsApp Booking Automation</p>
+        <h1 class="hero-anim-2">Every booking,<br><em>handled on WhatsApp.</em></h1>
+        <p class="hero-arabic hero-anim-2">يلا نحجز — حجوزاتك على الواتساب</p>
+        <p class="hero-desc hero-anim-3">
+          Yalanehgez connects your WhatsApp Business number to an AI that handles the entire booking conversation. Customers message, the AI responds, and reservations land in your records — automatically, around the clock.
+        </p>
+        <div class="hero-actions hero-anim-4">
+          <a href="#contact" class="btn-primary">Book a Demo</a>
+          <a href="#how" class="btn-outline">See How It Works</a>
+        </div>
+      </div>
+
+      <!-- Right: Phone Mockup -->
+      <div class="phone-wrap hero-anim-3">
+        <div class="phone-mockup">
+          <div class="phone-screen">
+            <div class="wa-header">
+              <div class="wa-avatar">تم</div>
+              <div>
+                <div class="wa-name">Tamara Bistro 🌿</div>
+                <div class="wa-status">online</div>
+              </div>
+            </div>
+            <div class="wa-chat">
+              <div class="wa-date-divider">Today</div>
+
+              <div class="wa-bubble from-user">
+                Hi! I'd like to book a table for tonight 🙏
+                <div class="wa-time">7:14 PM ✓✓</div>
+              </div>
+
+              <div class="wa-bubble from-bot">
+                Welcome! 🌿 Of course — for how many guests, and what time would you prefer?
+                <div class="wa-time">7:14 PM</div>
+              </div>
+
+              <div class="wa-bubble from-user">
+                4 people, around 8:30 PM
+                <div class="wa-time">7:14 PM ✓✓</div>
+              </div>
+
+              <div class="wa-bubble from-bot">
+                Perfect. Could I get your name for the reservation?
+                <div class="wa-time">7:14 PM</div>
+              </div>
+
+              <div class="wa-bubble from-user">
+                Ahmed Khalil
+                <div class="wa-time">7:15 PM ✓✓</div>
+              </div>
+
+              <div class="wa-bubble from-bot">
+                ✅ You're all set, Ahmed! Table for 4 tonight at 8:30 PM. We look forward to seeing you!
+                <div class="wa-time">7:15 PM</div>
+              </div>
+
+              <div class="wa-bubble from-bot" style="padding:10px 12px;">
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- ABOUT                                                       -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section id="about">
+  <div class="container">
+    <p class="section-label anim">What is Yalanehgez</p>
+    <h2 class="anim">Booking automation<br><em>built for Egypt.</em></h2>
+    <p class="section-intro anim">A B2B SaaS platform that connects your WhatsApp Business number to an AI booking assistant — automating every step from first message to confirmed reservation.</p>
+
+    <div class="about-grid">
+      <div>
+        <div class="about-body anim">
+          <p>Egyptian businesses lose bookings every day to unanswered messages, slow replies, and staff overwhelmed during peak hours. Yalanehgez eliminates the bottleneck — your AI assistant is always online, always polite, and never misses a reservation.</p>
+          <p>We integrate directly with your existing WhatsApp Business number. Bookings are logged automatically to Google Sheets or your preferred management system. No new app for your customers to download. No complex system for your staff to learn.</p>
+          <p>Yalanehgez is built on the WhatsApp Cloud API (Meta) and powered by Claude AI (Anthropic), enabling natural, accurate conversations in both Arabic and English.</p>
+        </div>
+        <div class="about-stat-row anim">
+          <div>
+            <div class="about-stat-num">24/7</div>
+            <div class="about-stat-label">Automated booking availability — no staff needed after hours</div>
+          </div>
+          <div>
+            <div class="about-stat-num">0</div>
+            <div class="about-stat-label">App downloads required for your customers</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="feature-list">
+        <div class="feature-item anim">
+          <div class="feature-icon">🤖</div>
+          <div>
+            <div class="feature-name">AI-Powered Conversations</div>
+            <div class="feature-desc">Claude AI handles natural conversations in Arabic and English, collecting all booking details without any human involvement.</div>
+          </div>
+        </div>
+        <div class="feature-item anim">
+          <div class="feature-icon">📋</div>
+          <div>
+            <div class="feature-name">Automatic Booking Records</div>
+            <div class="feature-desc">Every confirmed reservation is logged to Google Sheets or your management system in real time — instantly visible to your team.</div>
+          </div>
+        </div>
+        <div class="feature-item anim">
+          <div class="feature-icon">🔔</div>
+          <div>
+            <div class="feature-name">Confirmations & Reminders</div>
+            <div class="feature-desc">Automated confirmation messages and pre-visit reminders reduce no-shows without any manual effort from your staff.</div>
+          </div>
+        </div>
+        <div class="feature-item anim">
+          <div class="feature-icon">🌙</div>
+          <div>
+            <div class="feature-name">Always Available</div>
+            <div class="feature-desc">Your booking line never closes. Customers can reserve at midnight, on Fridays, or while your team is busy serving guests.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- WHO IT'S FOR                                                -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section id="for">
+  <div class="container">
+    <p class="section-label anim">Who It's For</p>
+    <h2 class="anim">Built for any business<br><em>that takes bookings.</em></h2>
+    <p class="section-intro anim">Yalanehgez is not limited to restaurants. It serves any business in Egypt where reservations are part of the daily workflow.</p>
+
+    <div class="for-grid">
+      <div class="for-card anim">
+        <div class="for-icon">🍽️</div>
+        <div class="for-title">Restaurants & Cafés</div>
+        <div class="for-desc">Table reservations, private dining rooms, and group bookings — handled automatically without tying up your host.</div>
+      </div>
+      <div class="for-card anim">
+        <div class="for-icon">🏖️</div>
+        <div class="for-title">Beach Clubs & Resorts</div>
+        <div class="for-desc">Cabin bookings, day passes, and seasonal reservations for North Coast, Sahel, and Red Sea properties.</div>
+      </div>
+      <div class="for-card anim">
+        <div class="for-icon">🎵</div>
+        <div class="for-title">Nightlife Venues & Lounges</div>
+        <div class="for-desc">Table bookings, guest list management, and VIP reservations without the phone chaos during busy nights.</div>
+      </div>
+      <div class="for-card anim">
+        <div class="for-icon">🏨</div>
+        <div class="for-title">Hotels & Chalets</div>
+        <div class="for-desc">Room inquiries, availability checks, and reservation confirmations via WhatsApp in seconds.</div>
+      </div>
+      <div class="for-card anim">
+        <div class="for-icon">💆</div>
+        <div class="for-title">Spas & Salons</div>
+        <div class="for-desc">Appointment booking, service selection, and therapist scheduling — fully automated, no missed calls.</div>
+      </div>
+      <div class="for-card anim">
+        <div class="for-icon">⚽</div>
+        <div class="for-title">Sports Facilities & Courts</div>
+        <div class="for-desc">Court bookings, time slot management, and recurring reservations handled with zero friction.</div>
+      </div>
+      <div class="for-card anim">
+        <div class="for-icon">🏥</div>
+        <div class="for-title">Private Clinics</div>
+        <div class="for-desc">Patient appointment scheduling in Arabic and English, with automated confirmations and reminders.</div>
+      </div>
+      <div class="for-card anim">
+        <div class="for-icon">🎪</div>
+        <div class="for-title">Event Spaces & Halls</div>
+        <div class="for-desc">Venue inquiries, availability, and booking confirmations for weddings, corporate events, and private functions.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- HOW IT WORKS                                                -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section id="how">
+  <div class="container">
+    <p class="section-label anim">How It Works</p>
+    <h2 class="anim">Three steps to<br><em>a confirmed booking.</em></h2>
+    <p class="section-intro anim">The entire workflow runs automatically — no staff involvement required until the guest walks in.</p>
+
+    <div class="steps">
+      <div class="step anim">
+        <div class="step-circle"><span class="step-num">1</span></div>
+        <h3>Customer Messages</h3>
+        <p>The customer sends a WhatsApp message to your business number — just as they would normally. No app to download, no account to create, no link to click.</p>
+      </div>
+      <div class="step anim">
+        <div class="step-circle"><span class="step-num">2</span></div>
+        <h3>AI Handles the Conversation</h3>
+        <p>The Yalanehgez AI engages in a natural conversation — in Arabic or English — collecting booking details, checking availability, and guiding the customer to confirmation.</p>
+      </div>
+      <div class="step anim">
+        <div class="step-circle"><span class="step-num">3</span></div>
+        <h3>Booking Confirmed & Logged</h3>
+        <p>The customer receives an instant confirmation on WhatsApp. The booking is automatically added to your records. Your team sees it the moment they check the dashboard.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- WHY WHATSAPP                                                -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section id="why">
+  <div class="container">
+    <p class="section-label anim">Why WhatsApp</p>
+    <h2 class="anim">Egypt's favourite app<br><em>is your booking channel.</em></h2>
+    <p class="section-intro anim">WhatsApp is not just a messaging app in Egypt — it is the primary communication channel for businesses and customers alike. Meeting your customers where they already are removes every barrier to booking.</p>
+
+    <div class="why-grid">
+      <div class="why-reasons">
+        <div class="why-card anim">
+          <div class="why-icon">📱</div>
+          <div>
+            <div class="why-title">Already on Every Phone</div>
+            <div class="why-desc">WhatsApp is installed on virtually every smartphone in Egypt. Your customers already know how to use it — no friction, no learning curve, no lost bookings.</div>
+          </div>
+        </div>
+        <div class="why-card anim">
+          <div class="why-icon">⚡</div>
+          <div>
+            <div class="why-title">Instant Responses, 24/7</div>
+            <div class="why-desc">WhatsApp messages are read within minutes. Customers get instant booking confirmation without waiting on hold or for someone to pick up a phone.</div>
+          </div>
+        </div>
+        <div class="why-card anim">
+          <div class="why-icon">🌐</div>
+          <div>
+            <div class="why-title">Arabic & English, Natively</div>
+            <div class="why-desc">Yalanehgez handles conversations in both Arabic and English, serving the full diversity of your customer base without any extra setup.</div>
+          </div>
+        </div>
+        <div class="why-card anim">
+          <div class="why-icon">🔒</div>
+          <div>
+            <div class="why-title">End-to-End Encrypted</div>
+            <div class="why-desc">WhatsApp's built-in encryption protects your customers' booking information, building trust and meeting modern privacy expectations.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="anim">
+        <div class="wa-info-box">
+          <div class="wa-logo-circle">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg" aria-label="WhatsApp">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+          </div>
+          <div class="wa-big-num">#1</div>
+          <div class="wa-big-label">Most-used messaging app<br>in Egypt</div>
+          <div class="wa-divider"></div>
+          <div class="wa-big-num" style="font-size:48px;">Zero</div>
+          <div class="wa-big-label">App downloads required<br>for your customers</div>
+          <div class="wa-divider"></div>
+          <div class="wa-big-num" style="font-size:48px;">24/7</div>
+          <div class="wa-big-label">Automated booking availability<br>no staff needed after hours</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- CONTACT                                                     -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section id="contact">
+  <div class="container">
+    <p class="section-label anim">Get in Touch</p>
+    <h2 class="anim">Ready to automate<br><em>your bookings?</em></h2>
+    <p class="section-intro anim">Get in touch to book a demo or learn more about how Yalanehgez works for your specific venue or business.</p>
+
+    <div class="contact-grid">
+      <!-- Info -->
+      <div>
+        <p class="contact-desc anim">
+          We work with restaurants, beach clubs, resorts, clinics, salons, and any booking-based business in Egypt. Reach out and we'll walk you through exactly how Yalanehgez would work for your operation.
+        </p>
+
+        <div class="contact-item anim">
+          <div class="contact-item-icon">📧</div>
+          <div>
+            <div class="contact-item-label">Email</div>
+            <div class="contact-item-val"><a href="mailto:yalanehgez.eg@gmail.com" style="color:inherit;text-decoration:none;">yalanehgez.eg@gmail.com</a></div>
+          </div>
+        </div>
+
+        <div class="contact-item anim">
+          <div class="contact-item-icon">📍</div>
+          <div>
+            <div class="contact-item-label">Based In</div>
+            <div class="contact-item-val">Egypt — Cairo, North Coast &amp; beyond</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <div class="anim">
+        <div class="form-group">
+          <label for="name">Your Name</label>
+          <input type="text" id="name" placeholder="Ahmed Hassan">
+        </div>
+        <div class="form-group">
+          <label for="business">Business Name</label>
+          <input type="text" id="business" placeholder="Your venue or business">
+        </div>
+        <div class="form-group">
+          <label for="type">Business Type</label>
+          <select id="type">
+            <option value="">Select your business type</option>
+            <option>Restaurant or Café</option>
+            <option>Beach Club or Resort</option>
+            <option>Nightlife Venue or Lounge</option>
+            <option>Hotel or Chalet</option>
+            <option>Spa or Salon</option>
+            <option>Sports Facility or Court</option>
+            <option>Private Clinic</option>
+            <option>Event Space or Hall</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="phone">WhatsApp Number</label>
+          <input type="tel" id="phone" placeholder="+20 1xx xxxx xxxx">
+        </div>
+        <div class="form-group">
+          <label for="msg">Message (optional)</label>
+          <textarea id="msg" placeholder="Tell us about your booking needs..."></textarea>
+        </div>
+        <a href="#" class="btn-wa" id="send-btn" onclick="sendEmail(event)">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          Send Message
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- PRIVACY POLICY                                              -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section id="privacy">
+  <div class="container">
+    <p class="section-label anim">Privacy Policy</p>
+    <h2 class="anim">Your data,<br><em>protected.</em></h2>
+
+    <div class="privacy-wrap">
+      <span class="privacy-updated">Last Updated: May 2025</span>
+
+      <h3>1. Introduction</h3>
+      <p>Yalanehgez ("we", "us", or "our") operates a WhatsApp-based booking automation platform for businesses in Egypt. This Privacy Policy explains how we collect, use, store, and protect personal data that is processed through our platform in connection with the WhatsApp Business API, provided by Meta Platforms, Inc.</p>
+      <p>By using or interacting with a business powered by Yalanehgez via WhatsApp, you agree to the collection and use of information as described in this policy. If you are a business operator using our platform ("Client"), this policy also governs your obligations with respect to the personal data of your end customers.</p>
+
+      <h3>2. Data We Collect</h3>
+      <p>When an end customer interacts with a Yalanehgez-powered business via WhatsApp, the following data may be collected and processed as part of the booking workflow:</p>
+      <ul>
+        <li><strong>Name</strong> — provided voluntarily by the customer during the booking conversation</li>
+        <li><strong>Phone number</strong> — the WhatsApp number used to initiate contact</li>
+        <li><strong>Booking details</strong> — date, time, party size, service type, and any special requests relevant to the reservation</li>
+        <li><strong>Message content</strong> — the text of WhatsApp messages exchanged during the booking process, to the extent necessary to process the reservation</li>
+      </ul>
+      <p>We do not collect payment card details, national ID numbers, health records, biometric data, or any sensitive personal data beyond what is strictly necessary to facilitate a booking transaction.</p>
+
+      <h3>3. How We Use Your Data</h3>
+      <p>Data collected through the Yalanehgez platform is used solely for the following purposes:</p>
+      <ul>
+        <li>Processing and confirming reservations on behalf of the business you are booking with</li>
+        <li>Sending booking confirmations and pre-visit reminders via WhatsApp</li>
+        <li>Maintaining booking records for the venue or business operator</li>
+        <li>Improving platform reliability and AI conversation quality, using anonymised or non-identifiable data where applicable</li>
+      </ul>
+      <p>We do not use your personal data for advertising, behavioural profiling, or any purpose unrelated to completing and managing your booking.</p>
+
+      <h3>4. Data Sharing and Third Parties</h3>
+      <p>We do not sell, rent, or trade your personal data to any third party for commercial purposes.</p>
+      <p>Your data may be shared with the following parties solely to deliver the booking service:</p>
+      <ul>
+        <li><strong>The business you are booking with</strong> — the venue or operator receives your name, phone number, and booking details in order to honour your reservation</li>
+        <li><strong>Meta Platforms, Inc.</strong> — as the operator of the WhatsApp Business API (WhatsApp Cloud API), Meta processes message data in accordance with its own Privacy Policy and Terms of Service. Yalanehgez operates as a business solution provider using the WhatsApp Cloud API on behalf of its clients</li>
+        <li><strong>Anthropic, PBC</strong> — the AI that powers the booking conversation is provided by Anthropic. Message content may be processed by Anthropic's systems to generate AI responses, subject to Anthropic's usage policies and privacy standards</li>
+        <li><strong>Google LLC</strong> — booking records may be stored in Google Sheets for venue record-keeping purposes, subject to Google's Privacy Policy and Terms of Service</li>
+      </ul>
+      <p>All third-party providers maintain their own privacy policies and data protection obligations. We select providers that meet reasonable standards for data security and compliance.</p>
+
+      <h3>5. WhatsApp Business API Compliance</h3>
+      <p>Yalanehgez operates through the WhatsApp Cloud API in full compliance with Meta's WhatsApp Business Policy, WhatsApp Business Terms of Service, and applicable messaging guidelines.</p>
+      <p>We do not initiate unsolicited outbound messages to end users. All automated messages sent through the platform are either (a) direct responses to a user-initiated conversation, or (b) transactional messages — such as booking confirmations or reminders — that the user has opted into by beginning the booking process.</p>
+      <p>Yalanehgez does not use the WhatsApp Business API for bulk marketing campaigns, unsolicited promotional messages, spam, or any messaging category prohibited by Meta's policies.</p>
+
+      <h3>6. Data Retention</h3>
+      <p>Booking records — including name, phone number, and reservation details — are retained for a maximum of 12 months from the date of the booking, after which they are deleted or anonymised unless a longer retention period is required by the business operator for legitimate operational or legal reasons.</p>
+      <p>WhatsApp message content is not permanently stored by Yalanehgez beyond what is necessary to complete the booking transaction. The retention of message metadata by Meta is governed by Meta's own data retention policies.</p>
+
+      <h3>7. Data Security</h3>
+      <p>We implement reasonable technical and organisational measures to protect personal data against unauthorised access, disclosure, alteration, or destruction. All data transmitted between our systems is protected by HTTPS/TLS encryption. WhatsApp messages are end-to-end encrypted by Meta by default.</p>
+      <p>In the event of a data security incident that affects your personal data, we will notify affected parties as required by applicable law and take prompt steps to mitigate harm.</p>
+
+      <h3>8. Your Rights</h3>
+      <p>You have the following rights with respect to your personal data processed through the Yalanehgez platform:</p>
+      <ul>
+        <li><strong>Right of Access</strong> — you may request a copy of the personal data we hold about you</li>
+        <li><strong>Right of Correction</strong> — you may request that inaccurate or incomplete data be corrected</li>
+        <li><strong>Right of Deletion</strong> — you may request that your personal data be deleted from our records, subject to any legal obligations to retain it</li>
+        <li><strong>Right to Opt Out</strong> — you may ask to be removed from any booking-related communications associated with a specific business's booking system</li>
+      </ul>
+      <p>To exercise any of these rights, please contact us using the details in Section 11 below. We will respond within 30 days of receiving your request.</p>
+
+      <h3>9. Cookies and Tracking</h3>
+      <p>The Yalanehgez booking platform operates primarily through WhatsApp and does not use cookies or web tracking technologies to collect data from end customers. If you are visiting this website, standard web server logs (such as IP address and browser type) may be collected by our hosting provider for security and performance purposes. These logs are not used for advertising or cross-site tracking.</p>
+
+      <h3>10. Children's Privacy</h3>
+      <p>The Yalanehgez platform is intended for use by adults. We do not knowingly collect personal data from individuals under the age of 13. If you believe a child has submitted personal data through our platform, please contact us immediately and we will take steps to delete it promptly.</p>
+
+      <h3>11. Changes to This Privacy Policy</h3>
+      <p>We may update this Privacy Policy from time to time to reflect changes in our practices, technology, or legal requirements. When we make changes, we will update the "Last Updated" date at the top of this page. We encourage you to review this policy periodically. Continued use of a Yalanehgez-powered booking service after changes are published constitutes acceptance of the updated policy.</p>
+
+      <h3>12. Contact Us</h3>
+      <p>For privacy-related questions, data access requests, or any other enquiries regarding this policy, please contact:</p>
+      <p>
+        <strong>Yalanehgez</strong><br>
+        Email: yalanehgez.eg@gmail.com<br>
+        Location: Egypt — Cairo, North Coast &amp; beyond
+      </p>
+      <p>We are committed to working with you to resolve any concerns about the handling of your personal data.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- FOOTER                                                      -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<footer>
+  <div class="container">
+    <div>
+      <div class="footer-brand-en">Yalanehgez</div>
+      <div class="footer-brand-ar">يلا نحجز</div>
+    </div>
+    <div class="footer-right">
+      WhatsApp Booking Automation · Egypt<br>
+      <a href="#privacy">Privacy Policy</a> &middot; <a href="#contact">Contact</a><br>
+      &copy; 2025 Yalanehgez. All rights reserved.
+    </div>
+  </div>
+</footer>
+
+<!-- ─── Scripts ──────────────────────────────────────────────── -->
+<script>
+  /* Scroll reveal */
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.anim').forEach((el) => {
+    const siblings = el.parentElement.querySelectorAll('.anim');
+    let delay = 0;
+    siblings.forEach((sib, idx) => { if (sib === el) delay = idx * 80; });
+    el.style.transitionDelay = delay + 'ms';
+    observer.observe(el);
+  });
+
+  /* Contact form → mailto */
+  function sendEmail(e) {
+    e.preventDefault();
+    const name     = document.getElementById('name').value.trim();
+    const business = document.getElementById('business').value.trim();
+    const type     = document.getElementById('type').value;
+    const phone    = document.getElementById('phone').value.trim();
+    const msg      = document.getElementById('msg').value.trim();
+
+    if (!name || !business) {
+      alert('Please fill in your name and business name before sending.');
+      return;
+    }
+
+    const subject = encodeURIComponent('Demo Request — ' + business);
+    const body = encodeURIComponent(
+      'Hi Yalanehgez,\n\n' +
+      'I would like to book a demo.\n\n' +
+      'Name: ' + name + '\n' +
+      'Business: ' + business + '\n' +
+      'Type: ' + (type || 'Not specified') + '\n' +
+      'WhatsApp: ' + (phone || 'Not provided') + '\n\n' +
+      (msg ? 'Message:\n' + msg + '\n\n' : '') +
+      'Looking forward to hearing from you!'
+    );
+
+    window.location.href = 'mailto:yalanehgez.eg@gmail.com?subject=' + subject + '&body=' + body;
+  }
+</script>
+
+</body>
+</html>
