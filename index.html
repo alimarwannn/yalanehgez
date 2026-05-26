@@ -68,6 +68,7 @@
       <a class="btn btn-g" href="#cta" data-en="Free Demo" data-ar="ديمو مجاني">Free Demo</a>
     </div>
   </nav>
+
   <section id="hero">
     <div class="glow g1"></div><div class="glow g2"></div>
     <div class="inner hero-grid">
@@ -97,3 +98,499 @@
             <div class="msg zaki"><div class="label">Zaki</div>Confirmed, Ali. Booking for 4 tomorrow at 8:00 PM. Deposit link, confirmation page, and reminder are ready.<div class="mini-btns"><span class="mini-btn">Modify</span><span class="mini-btn">Cancel</span></div><div class="time">8:16 PM</div></div>
           </div>
           <div class="quick-prompts" aria-label="Try example prompts">
+            <div class="qp-label">Try a live scenario</div>
+            <div class="qp-row">
+              <button class="quick-prompt" type="button" data-demo="simulate booking" onclick="sendPresetDemo(this.dataset.demo)"><span>📅</span> Simulate booking</button>
+              <button class="quick-prompt" type="button" data-demo="Can I pay by Visa and get a receipt?" onclick="sendPresetDemo(this.dataset.demo)"><span>💳</span> Pay</button>
+            </div>
+          </div>
+          <div class="wa-input"><div class="field" id="zakiInput" contenteditable="true" role="textbox" aria-label="Message Zaki" data-placeholder="Message Zaki..."></div><button class="send" id="zakiSend" type="button" aria-label="Send message">➤</button></div>
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <div id="problem"><div class="inner">
+    <div class="eyebrow" data-en="Sound familiar?" data-ar="ده بيحصل معاك؟">Sound familiar?</div>
+    <div class="grid-4">
+      <article class="tile reveal"><div class="ico">📵</div><h3 data-en="Missed bookings during service" data-ar="حجوزات بتضيع وإنت شغّال">Missed bookings during service</h3><p data-en="Phone rings while your team is serving. Nobody picks up. That customer books elsewhere." data-ar="التليفون بيرن وكلكم شغّالين. محدش بيرد. والعميل يحجز في مكان تاني.">Phone rings while your team is serving. Nobody picks up. That customer books elsewhere.</p></article>
+      <article class="tile reveal"><div class="ico">📱</div><h3 data-en="Staff glued to WhatsApp" data-ar="الستاف غرقانين في الواتساب">Staff glued to WhatsApp</h3><p data-en="Someone spends half their shift replying to the same booking questions." data-ar="في حد بيعيش نص شيفته وهو بيرد على نفس أسئلة الحجز.">Someone spends half their shift replying to the same booking questions.</p></article>
+      <article class="tile reveal"><div class="ico">👻</div><h3 data-en="No-shows with no warning" data-ar="ناس بتغيب من غير ما تقول">No-shows with no warning</h3><p data-en="Customers forget. Slots sit empty. No reminder flow, deposit, or waitlist refill." data-ar="الناس بتنسى. المواعيد تفضى. ومفيش تذكير أو عربون أو قائمة انتظار تملّي المكان.">Customers forget. Slots sit empty. No reminder flow, deposit, or waitlist refill.</p></article>
+      <article class="tile reveal"><div class="ico">📝</div><h3 data-en="Bookings scattered everywhere" data-ar="حجوزات مبعثرة في كل حتة">Bookings scattered everywhere</h3><p data-en="WhatsApp chats, notebooks, memory. Your team never has one clean source of truth." data-ar="واتساب، كراسات، ذاكرة. مفيش مصدر واحد واضح للفريق.">WhatsApp chats, notebooks, memory. Your team never has one clean source of truth.</p></article>
+      <article class="tile reveal"><div class="ico">📲</div><h3 data-en="Bookings buried in Instagram DMs" data-ar="حجوزات مدفونة في رسائل إنستجرام">Bookings buried in Instagram DMs</h3><p data-en="A customer replies to your story to book. It gets buried in 300 DMs. By morning they've gone somewhere else." data-ar="عميل يرد على الستوري عشان يحجز. الرسالة تتدفن وسط ٣٠٠ DM. الصبح يكون حجز في مكان تاني.">A customer replies to your story to book. It gets buried in 300 DMs. By morning they've gone somewhere else.</p></article>
+    </div>
+  </div></div>
+
+  <section id="zaki"><div class="inner two">
+    <div class="panel reveal">
+      <div class="panel-head"><div class="avatar">🤖</div><div><strong data-en="Zaki — Your AI Assistant" data-ar="زكي — مساعدك الذكي">Zaki — Your AI Assistant</strong><div class="venue" data-en="Always online · Arabic & English · WhatsApp-native" data-ar="شغّال ٢٤/٧ · عربي وإنجليزي · على الواتساب">Always online · Arabic & English · WhatsApp-native</div></div></div>
+      <div class="panel-body">
+        <div class="feature-row"><span>💬</span><div><strong data-en="Books, modifies, and cancels" data-ar="بيحجز، بيعدّل، وبيلغي">Books, modifies, and cancels</strong><span data-en="Full reservation journey from first message to confirmation." data-ar="رحلة الحجز كاملة من أول رسالة لحد التأكيد.">Full reservation journey from first message to confirmation.</span></div></div>
+        <div class="feature-row"><span>🇪🇬</span><div><strong data-en="Franco, Arabic & English" data-ar="عربي وفرانكو وإنجليزي">Franco, Arabic & English</strong><span data-en="Guests type in any mix — عربي, Franco, or English. Zaki understands all three natively. No switching, no confusion." data-ar="العملاء يكتبوا بأي مكس — عربي، فرانكو، أو إنجليزي. زكي بيفهم التلاتة طبيعي. من غير تبديل ولا لخبطة.">Guests type in any mix — عربي, Franco, or English. Zaki understands all three natively. No switching, no confusion.</span></div></div>
+        <div class="feature-row"><span>🎤</span><div><strong data-en="Understands voice notes" data-ar="بيفهم الرسائل الصوتية">Understands voice notes</strong><span data-en="Guests send a voice message. Zaki transcribes and replies naturally." data-ar="الضيف يبعت صوتية وزكي يفهمها ويرد طبيعي.">Guests send a voice message. Zaki transcribes and replies naturally.</span></div></div>
+        <div class="feature-row"><span>🧠</span><div><strong data-en="Remembers every guest" data-ar="بيتذكر كل عميل">Remembers every guest</strong><span data-en="Zaki recognises returning guests by number, greets them by name, and recalls their preferences, occasion history, and favourite table. First-timers become regulars." data-ar="زكي يتعرف على العملاء الراجعين من الرقم، يرحب بيهم بالاسم، ويتذكر تفضيلاتهم ومناسباتهم ومكانهم المفضل. أول زيارة تتحول لعميل دائم.">Zaki recognises returning guests by number, greets them by name, and recalls their preferences, occasion history, and favourite table. First-timers become regulars.</span></div></div>
+        <div class="feature-row"><span>🔀</span><div><strong data-en="Knows when to hand over" data-ar="بيعرف إمتى يسلّم للفريق">Knows when to hand over</strong><span data-en="When a conversation gets complex or a guest is frustrated, Zaki detects it and escalates to your team immediately — so nothing falls through the cracks." data-ar="لما المحادثة تبقى معقدة أو العميل متضايق، زكي يكتشف ده ويسلّمها لفريقك فورًا — عشان مفيش حاجة تقع بين الكراسي.">When a conversation gets complex or a guest is frustrated, Zaki detects it and escalates to your team immediately — so nothing falls through the cracks.</span></div></div>
+        <div class="feature-row"><span>📊</span><div><strong data-en="No-show risk scoring" data-ar="تقييم احتمالية عدم الحضور">No-show risk scoring</strong><span data-en="Zaki flags high-risk bookings — first-timers, large groups, peak-night slots — and requests a deposit automatically. Fewer empty tables, less lost revenue." data-ar="زكي يعلّم الحجوزات الأعلى خطورة — أول مرة، جروبات كبيرة، أوقات زحمة — ويطلب عربون أوتوماتيك. طاولات فاضية أقل وإيراد ضائع أقل.">Zaki flags high-risk bookings — first-timers, large groups, peak-night slots — and requests a deposit automatically. Fewer empty tables, less lost revenue.</span></div></div>
+        <div class="feature-row"><span>🔁</span><div><strong data-en="Wins back lapsed guests" data-ar="بيرجع العملاء اللي غابوا">Wins back lapsed guests</strong><span data-en="Guests who haven't visited in a while receive a warm, personalised WhatsApp from Zaki — automatically. No campaign manager needed." data-ar="العملاء اللي بقالهم فترة ماجوش يستقبلوا رسالة واتساب دافئة وشخصية من زكي — أوتوماتيك. من غير مدير حملات.">Guests who haven't visited in a while receive a warm, personalised WhatsApp from Zaki — automatically. No campaign manager needed.</span></div></div>
+        <div class="feature-row"><span>🧾</span><div><strong data-en="Takes orders, payments, and receipts" data-ar="بياخد أوردرات ودفع وفواتير">Takes orders, payments, and receipts</strong><span data-en="Customers can order, pay by InstaPay or Visa, and receive receipts on WhatsApp." data-ar="العميل يطلب ويدفع بإنستاباي أو فيزا ويستلم الفاتورة على الواتساب.">Customers can order, pay by InstaPay or Visa, and receive receipts on WhatsApp.</span></div></div>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="tag" data-en="Meet Zaki" data-ar="تعرّف على زكي">Meet Zaki</div>
+      <h2 class="sec-title" data-en="Your new best<br>team member.<br><span>On WhatsApp.</span>" data-ar="موظفك الجديد.<br>شغّال ٢٤/٧.<br><span>على الواتساب.</span>">Your new best<br>team member.<br><span>On WhatsApp.</span></h2>
+      <p class="sec-sub" data-en="Zaki is not a basic chatbot. He is a trained AI assistant who knows your business, speaks your customers' language, and keeps bookings, orders, payments, and follow-ups moving." data-ar="زكي مش بوت عادي. ده مساعد AI اتدرّب على شغلك، بيتكلم بلغة عملاءك، وبيحرّك الحجوزات والأوردرات والدفع والمتابعة." >Zaki is not a basic chatbot. He is a trained AI assistant who knows your business, speaks your customers' language, and keeps bookings, orders, payments, and follow-ups moving.</p>
+      <div class="points">
+        <div class="point"><div class="point-icon">🔔</div><div><h3 data-en="Automatic reminders" data-ar="تذكيرات أوتوماتيك">Automatic reminders</h3><p data-en="Day-before and 2-hour reminders to reduce no-shows." data-ar="تذكير قبل يوم وقبل ساعتين لتقليل الغياب.">Day-before and 2-hour reminders to reduce no-shows.</p></div></div>
+        <div class="point"><div class="point-icon">🔄</div><div><h3 data-en="Waitlist refill" data-ar="ملء الأماكن الفاضية">Waitlist refill</h3><p data-en="When a booking cancels, Zaki messages the next customer on the waitlist." data-ar="لو حجز اتلغى، زكي يواصل أول عميل في قائمة الانتظار.">When a booking cancels, Zaki messages the next customer on the waitlist.</p></div></div>
+        <div class="point"><div class="point-icon">💰</div><div><h3 data-en="InstaPay and Visa payments" data-ar="دفع إنستاباي وفيزا">InstaPay and Visa payments</h3><p data-en="Collect deposits or full payments, confirm transfers, and send receipts automatically." data-ar="استلم عربون أو دفع كامل، أكّد التحويلات، وابعت فواتير أوتوماتيك.">Collect deposits or full payments, confirm transfers, and send receipts automatically.</p></div></div>
+      </div>
+    </div>
+  </div></section>
+
+  <section id="operator"><div class="inner">
+    <div class="sec-head"><div class="tag" data-en="For Operators" data-ar="للإدارة">For Operators</div><h2 class="sec-title" data-en="Quick control on WhatsApp.<br><span>Full depth in the dashboard.</span>" data-ar="تحكم سريع على الواتساب.<br><span>وتفاصيل كاملة في الداشبورد.</span>">Quick control on WhatsApp.<br><span>Full depth in the dashboard.</span></h2><p class="sec-sub" data-en="Use WhatsApp commands when you are busy with customers. Open the dashboard when you need schedules, staff roles, orders, payments, exports, and deeper edits." data-ar="استخدم أوامر واتساب وإنت مشغول مع العملاء. وافتح الداشبورد لما تحتاج الجداول، صلاحيات الستاف، الأوردرات، الدفع، التصدير، والتعديلات الكبيرة.">Use WhatsApp commands when you are busy with customers. Open the dashboard when you need schedules, staff roles, orders, payments, exports, and deeper edits.</p></div>
+    <div class="op-layout">
+      <div class="terminal reveal"><div class="term-bar"><span class="td r"></span><span class="td y"></span><span class="td gr"></span><span class="term-title">Manager WhatsApp · Zaki Commands</span></div><div class="term-body">
+        <div><div class="prompt">manager · 09:01 AM</div><div class="cmd">#today</div><div class="outbox">Today: <span class="green">14 confirmed</span><br>7:00 PM · Sara M. · <span class="gold">2 guests</span><br>7:30 PM · Omar K. · <span class="gold">6 guests</span> · terrace<br>8:00 PM · Nour A. · <span class="gold">4 guests</span> · birthday<br>+ 11 more...</div></div>
+        <div><div class="prompt">manager · 08:45 PM</div><div class="cmd">#pause</div><div class="outbox">Bookings paused. Zaki tells guests you are full tonight. Reply <span class="gold">#resume</span> to reopen.</div></div>
+        <div><div class="prompt">manager · 10:00 AM</div><div class="cmd">#blast weekend menu is live</div><div class="outbox">Sent to 47 recent guests. 3 skipped outside WhatsApp's messaging window.</div></div>
+        <div><div class="prompt">manager · 11:00 PM</div><div class="cmd">#reactivation send</div><div class="outbox"><span class="green">Zaki</span><br>Sending to 12 guests who haven't visited in 30+ days.<br>3 skipped — outside WhatsApp messaging window.</div></div>
+      </div></div>
+      <div class="cards reveal">
+        <article class="card"><div class="ico">📊</div><h3>#today / #tomorrow / #bookings</h3><p data-en="Booking lists for today, tomorrow, or next 7 days, instantly in WhatsApp." data-ar="قوائم حجوزات اليوم أو بكره أو الأسبوع، فورية في الواتساب.">Booking lists for today, tomorrow, or next 7 days, instantly in WhatsApp.</p></article>
+        <article class="card"><div class="ico">⏸️</div><h3>#pause / #resume / #full</h3><p data-en="Stop or reopen bookings instantly when capacity changes." data-ar="أوقّف أو شغّل الحجوزات فورًا لما الطاقة تتغير.">Stop or reopen bookings instantly when capacity changes.</p></article>
+        <article class="card"><div class="ico">📣</div><h3>#blast</h3><p data-en="Send an offer or event to recent guests in one WhatsApp command." data-ar="ابعت عرض أو إعلان لضيوفك السابقين بأمر واتساب واحد.">Send an offer or event to recent guests in one WhatsApp command.</p></article>
+      </div>
+    </div>
+  </div></section>
+
+  <section id="dashboard"><div class="inner dash-layout">
+    <div class="reveal"><div class="tag" data-en="The Dashboard" data-ar="الداشبورد">The Dashboard</div><h2 class="sec-title" data-en="One live cockpit<br><span>for the whole team.</span>" data-ar="لوحة تحكم واحدة<br><span>لكل الفريق.</span>">One live cockpit<br><span>for the whole team.</span></h2><p class="sec-sub" data-en="The dashboard replaces scattered spreadsheets as the primary management layer: bookings, appointments, live orders, payments, receipts, Zaki settings, staff roles, and exports in one place." data-ar="الداشبورد هو طبقة الإدارة الأساسية بدل الملفات المتفرقة: حجوزات، مواعيد، أوردرات، دفع، فواتير، إعدادات زكي، صلاحيات ستاف، وتصدير في مكان واحد.">The dashboard replaces scattered spreadsheets as the primary management layer: bookings, appointments, live orders, payments, receipts, Zaki settings, staff roles, and exports in one place.</p>
+      <div class="points">
+        <div class="point"><div class="point-icon">🔒</div><div><h3 data-en="PIN login with roles" data-ar="دخول PIN بصلاحيات">PIN login with roles</h3><p data-en="Owner, manager, front desk, staff, and operations teams each see the right tools." data-ar="الأوونر والمنيجر والاستقبال والستاف وفريق التشغيل، كل واحد يشوف اللي يخصه.">Owner, manager, front desk, staff, and operations teams each see the right tools.</p></div></div>
+        <div class="point"><div class="point-icon">🗺️</div><div><h3 data-en="Live floor plan" data-ar="مخطط طاولات لحظي">Live floor plan</h3><p data-en="Color-coded availability for the host stand." data-ar="حالة كل طاولة بالألوان للهوست على الباب.">Color-coded availability for the host stand.</p></div></div>
+        <div class="point"><div class="point-icon">✏️</div><div><h3 data-en="Zaki editor, no code" data-ar="محرّر زكي، من غير كود">Zaki editor, no code</h3><p data-en="Edit hours, closed dates, capacity, tone, FAQs, and menu logic." data-ar="عدّل الساعات، الأيام المغلقة، الطاقة، الأسلوب، الأسئلة والمنيو.">Edit hours, closed dates, capacity, tone, FAQs, and menu logic.</p></div></div>
+      </div>
+    </div>
+    <div class="dash-preview reveal">
+      <div class="dash-top"><div><div class="dash-logo">Yalanehgez</div><div class="venue">Example Business Dashboard</div></div><div class="role" data-en="Manager" data-ar="مدير">Manager</div></div>
+      <div class="stats"><div class="stat"><small data-en="TODAY'S BOOKINGS" data-ar="حجوزات اليوم">TODAY'S BOOKINGS</small><strong>14 <span class="green">✓</span></strong><div class="venue" data-en="47 covers total" data-ar="٤٧ ضيف إجمالي">47 covers total</div></div><div class="stat"><small data-en="STATUS" data-ar="الحالة">STATUS</small><strong class="green" data-en="Open" data-ar="مفتوح">Open</strong><div class="venue" data-en="Accepting bookings" data-ar="بنستقبل حجوزات">Accepting bookings</div></div></div>
+      <div class="booking"><span class="time-cell">7:00 PM</span><strong>Sara M.</strong><span data-en="2 guests" data-ar="٢ ضيف">2 guests</span><span class="status" data-en="Confirmed" data-ar="مؤكد">Confirmed</span></div>
+      <div class="booking"><span class="time-cell">7:30 PM</span><strong>Omar K.</strong><span data-en="6 · Terrace" data-ar="٦ · تراس">6 · Terrace</span><span class="status">VIP</span></div>
+      <div class="booking"><span class="time-cell">8:00 PM</span><strong>Nour A.</strong><span data-en="4 · Birthday" data-ar="٤ · عيد ميلاد">4 · Birthday</span><span class="status" data-en="Confirmed" data-ar="مؤكد">Confirmed</span></div>
+      <div class="dash-foot"><span class="dash-chip">Export CSV</span><span class="dash-chip">Schedule</span><span class="dash-chip">Live Orders</span><span class="dash-chip">Payments</span><span class="dash-chip">Receipts</span><span class="dash-chip">Staff</span></div>
+    </div>
+  </div></section>
+
+  <section id="features"><div class="inner">
+    <div class="sec-head"><div class="tag" data-en="Full Feature Set" data-ar="كل المميزات">Full Feature Set</div><h2 class="sec-title" data-en="Everything.<br><span>Built in.</span>" data-ar="كل حاجة.<br><span>جوّاه.</span>">Everything.<br><span>Built in.</span></h2><p class="sec-sub" data-en="Yalanehgez is a complete WhatsApp operations platform for any business that takes bookings, appointments, orders, or payments." data-ar="يلا نحجز منصة تشغيل كاملة على الواتساب لأي بزنس عنده حجوزات أو مواعيد أو أوردرات أو دفع.">Yalanehgez is a complete WhatsApp operations platform for any business that takes bookings, appointments, orders, or payments.</p></div>
+    <div class="tabs" id="tabs">
+      <button class="tab active" data-tab="guest" data-en="Guest" data-ar="الضيف">Guest</button>
+      <button class="tab" data-tab="operator" data-en="Operator" data-ar="الإدارة">Operator</button>
+      <button class="tab" data-tab="auto" data-en="Automation" data-ar="الأتمتة">Automation</button>
+      <button class="tab" data-tab="dash" data-en="Dashboard" data-ar="الداشبورد">Dashboard</button>
+    </div>
+    <div class="tab-panel active" id="tab-guest"><div class="feature-grid">
+      <article class="card reveal"><div class="ico">📅</div><h3 data-en="Book, modify, cancel" data-ar="حجز وتعديل وإلغاء">Book, modify, cancel</h3><p data-en="The full reservation journey inside a natural WhatsApp chat." data-ar="رحلة الحجز كاملة جوه محادثة واتساب طبيعية.">The full reservation journey inside a natural WhatsApp chat.</p></article>
+      <article class="card reveal"><div class="ico">🔗</div><h3 data-en="Confirmation pages" data-ar="صفحات تأكيد">Confirmation pages</h3><p data-en="Mobile booking pages with details, modify/cancel options, and calendar add." data-ar="صفحات موبايل بتفاصيل الحجز والتعديل والإلغاء والإضافة للتقويم.">Mobile booking pages with details, modify/cancel options, and calendar add.</p></article>
+      <article class="card reveal"><div class="ico">🧾</div><h3 data-en="Orders, payments, receipts" data-ar="أوردرات ودفع وفواتير">Orders, payments, receipts</h3><p data-en="Take orders or deposits, support InstaPay and Visa, then send clean receipts on WhatsApp." data-ar="استلم أوردرات أو عربون، ادعم إنستاباي وفيزا، وابعت فواتير واضحة على الواتساب.">Take orders or deposits, support InstaPay and Visa, then send clean receipts on WhatsApp.</p></article>
+    </div></div>
+    <div class="tab-panel" id="tab-operator"><div class="feature-grid">
+      <article class="card"><div class="ico">❌</div><h3>#cancel</h3><p data-en="Search by name, confirm, and Zaki notifies the guest automatically." data-ar="دور بالاسم، أكّد، وزكي يبلغ الضيف أوتوماتيك.">Search by name, confirm, and Zaki notifies the guest automatically.</p></article>
+      <article class="card"><div class="ico">🌙</div><h3>#ramadan / #iftar</h3><p data-en="Ramadan-aware scheduling, copy, and iftar timing." data-ar="جدولة وردود مناسبة لرمضان ووقت الإفطار.">Ramadan-aware scheduling, copy, and iftar timing.</p></article>
+      <article class="card"><div class="ico">📈</div><h3 data-en="Daily and monthly reports" data-ar="تقارير يومية وشهرية">Daily and monthly reports</h3><p data-en="Morning summaries, end-of-night reports, and monthly ROI updates." data-ar="ملخص الصبح، تقرير آخر الليل، وتحديث شهري للأداء.">Morning summaries, end-of-night reports, and monthly ROI updates.</p></article>
+    </div></div>
+    <div class="tab-panel" id="tab-auto"><div class="feature-grid">
+      <article class="card"><div class="ico">⏰</div><h3 data-en="24-hour and 2-hour reminders" data-ar="تذكير قبل ٢٤ ساعة وساعتين">24-hour and 2-hour reminders</h3><p data-en="Personal reminders fire automatically in the guest's language." data-ar="تذكيرات شخصية أوتوماتيك بلغة الضيف.">Personal reminders fire automatically in the guest's language.</p></article>
+      <article class="card"><div class="ico">🔄</div><h3 data-en="Waitlist auto-refill" data-ar="ملء تلقائي من الانتظار">Waitlist auto-refill</h3><p data-en="Cancelled booking? Zaki offers the slot to the next customer." data-ar="حجز اتلغى؟ زكي يعرض المكان على أول عميل في الانتظار.">Cancelled booking? Zaki offers the slot to the next customer.</p></article>
+      <article class="card"><div class="ico">💤</div><h3 data-en="Lapsed-client reactivation" data-ar="رجوع الزباين القدامى">Lapsed-client reactivation</h3><p data-en="Guests who have not visited recently get tasteful WhatsApp re-engagement." data-ar="ضيوف بقالهم فترة ما زاروش ياخدوا رسالة راقية ترجعهم.">Guests who have not visited recently get tasteful WhatsApp re-engagement.</p></article>
+    </div></div>
+    <div class="tab-panel" id="tab-dash"><div class="feature-grid">
+      <article class="card"><div class="ico">📆</div><h3 data-en="Schedule and capacity" data-ar="الجداول والطاقة">Schedule and capacity</h3><p data-en="Tables, rooms, doctors, stylists, courts, classes, slots, and availability in one live view." data-ar="طاولات، غرف، دكاترة، ستايليست، ملاعب، حصص، مواعيد، وتوفر في شاشة واحدة.">Tables, rooms, doctors, stylists, courts, classes, slots, and availability in one live view.</p></article>
+      <article class="card"><div class="ico">👥</div><h3 data-en="Staff roles" data-ar="صلاحيات الستاف">Staff roles</h3><p data-en="Role-gated tools for owner, manager, front desk, staff, and operations." data-ar="أدوات بصلاحيات للأوونر والمنيجر والاستقبال والستاف والتشغيل.">Role-gated tools for owner, manager, front desk, staff, and operations.</p></article>
+      <article class="card"><div class="ico">📤</div><h3 data-en="Exports and audit trail" data-ar="تصدير وسجل تغييرات">Exports and audit trail</h3><p data-en="Export bookings and review key operational actions." data-ar="صدّر الحجوزات وراجع أهم الإجراءات التشغيلية.">Export bookings and review key operational actions.</p></article>
+    </div></div>
+  </div></section>
+
+  <section id="roi"><div class="inner roi-layout">
+    <div class="roi-card reveal"><div class="roi-head"><small data-en="Operational ROI" data-ar="عائد تشغيلي">Operational ROI</small><h3 data-en="Less missed revenue. Less admin." data-ar="إيراد أقل ضياعًا. إدارة أقل.">Less missed revenue. Less admin.</h3></div><div class="roi-body">
+      <div class="roi-row"><span>📞</span><span data-en="Missed calls captured as WhatsApp bookings" data-ar="مكالمات فائتة تتحول لحجوزات واتساب">Missed calls captured as WhatsApp bookings</span><span class="metric">24/7</span></div>
+      <div class="roi-row"><span>👻</span><span data-en="No-shows reduced through reminder flows" data-ar="تقليل الغياب بتذكيرات تلقائية">No-shows reduced through reminder flows</span><span class="metric">2x</span></div>
+      <div class="roi-row"><span>🧾</span><span data-en="Cleaner operations through one dashboard" data-ar="تشغيل أوضح من داشبورد واحدة">Cleaner operations through one dashboard</span><span class="metric">Live</span></div>
+    </div><div class="roi-foot" data-en="Zaki turns message chaos into a managed revenue channel." data-ar="زكي يحوّل فوضى الرسائل لقناة إيراد منظمة.">Zaki turns message chaos into a managed revenue channel.</div></div>
+    <div class="reveal"><div class="tag" data-en="Why it works" data-ar="ليه ده بينجح؟">Why it works</div><h2 class="sec-title" data-en="Customers already<br><span>want WhatsApp.</span>" data-ar="العملاء أصلًا<br><span>عايزين واتساب.</span>">Customers already<br><span>want WhatsApp.</span></h2><p class="sec-sub" data-en="No app download. No new behavior. Yalanehgez meets customers where they already are, then gives operators the dashboard structure the business needs." data-ar="من غير تحميل تطبيق. من غير عادة جديدة. يلا نحجز يقابل العملاء في المكان اللي هم فيه، ويدي الإدارة النظام اللي محتاجاه.">No app download. No new behavior. Yalanehgez meets customers where they already are, then gives operators the dashboard structure the business needs.</p></div>
+  </div></section>
+
+  <section id="for"><div class="inner">
+    <div class="sec-head"><div class="tag" data-en="Industries" data-ar="المجالات">Industries</div><h2 class="sec-title" data-en="If your business takes bookings,<br><span>Zaki can run them.</span>" data-ar="لو شغلك فيه حجوزات،<br><span>زكي يقدر يديرها.</span>">If your business takes bookings,<br><span>Zaki can run them.</span></h2><p class="sec-sub" data-en="Built for Egypt's service sector: any business where bookings, appointments, orders, payments, and reminders are part of daily life." data-ar="متصمم لقطاع الخدمات في مصر: أي بزنس فيه حجوزات، مواعيد، أوردرات، دفع، وتذكيرات بشكل يومي.">Built for Egypt's service sector: any business where bookings, appointments, orders, payments, and reminders are part of daily life.</p></div>
+    <div class="grid-3">
+      <article class="tile reveal"><div class="ico">🍽️</div><h3 data-en="Restaurants and cafes" data-ar="مطاعم وكافيهات">Restaurants and cafes</h3><p data-en="Table reservations, group bookings, birthday setups, ordering, InstaPay/Visa payments, and WhatsApp receipts during peak service." data-ar="حجوزات طاولات، جروبات، أعياد ميلاد، أوردرات، دفع إنستاباي/فيزا، وفواتير واتساب وقت الزحمة.">Table reservations, group bookings, birthday setups, ordering, InstaPay/Visa payments, and WhatsApp receipts during peak service.</p></article>
+      <article class="tile reveal"><div class="ico">🏖️</div><h3 data-en="Beach clubs and resorts" data-ar="بيتش كلاب ومنتجعات">Beach clubs and resorts</h3><p data-en="Cabins, day passes, seasonal reservations, deposits, capacity control, and WhatsApp-first guest communication." data-ar="كابينات، داي باس، حجوزات موسمية، عربون، تحكم في الطاقة، وتواصل واتساب مع الضيوف.">Cabins, day passes, seasonal reservations, deposits, capacity control, and WhatsApp-first guest communication.</p></article>
+      <article class="tile reveal"><div class="ico">💇</div><h3 data-en="Salons and spas" data-ar="صالونات وسبا">Salons and spas</h3><p data-en="Appointment booking by service, stylist availability, deposits, reminders, follow-ups, and fewer missed customers." data-ar="حجز مواعيد حسب الخدمة والستايليست، عربون، تذكيرات، متابعة، وعملاء أقل ضياعًا.">Appointment booking by service, stylist availability, deposits, reminders, follow-ups, and fewer missed customers.</p></article>
+      <article class="tile reveal"><div class="ico">🏋️</div><h3 data-en="Sports and fitness" data-ar="رياضة ولياقة">Sports and fitness</h3><p data-en="Court bookings, classes, sessions, memberships, attendance lists, capacity, payments, and broadcasts." data-ar="حجز ملاعب، كلاسات، سيشنز، اشتراكات، حضور، طاقة، دفع، وبرودكاست.">Court bookings, classes, sessions, memberships, attendance lists, capacity, payments, and broadcasts.</p></article>
+      <article class="tile reveal"><div class="ico">🏥</div><h3 data-en="Medical clinics" data-ar="عيادات طبية">Medical clinics</h3><p data-en="Patient appointments, reminders, cancellations, doctor schedules, deposits where needed, and less pressure on reception." data-ar="مواعيد مرضى، تذكيرات، إلغاء، جداول دكاترة، عربون عند الحاجة، وضغط أقل على الاستقبال.">Patient appointments, reminders, cancellations, doctor schedules, deposits where needed, and less pressure on reception.</p></article>
+      <article class="tile reveal"><div class="ico">🎉</div><h3 data-en="Events and hospitality" data-ar="إيفنتات وضيافة">Events and hospitality</h3><p data-en="Private bookings, group reservations, VIP notes, tickets, guest lists, closed dates, and operator summaries." data-ar="حجوزات خاصة، جروبات، ملاحظات VIP، تذاكر، قوائم حضور، أيام مغلقة، وملخصات للإدارة.">Private bookings, group reservations, VIP notes, tickets, guest lists, closed dates, and operator summaries.</p></article>
+    </div>
+  </div></section>
+
+  <section id="how"><div class="inner">
+    <div class="sec-head"><div class="tag" data-en="How it starts" data-ar="البداية إزاي؟">How it starts</div><h2 class="sec-title" data-en="Launch without<br><span>changing your operation.</span>" data-ar="ابدأ من غير<br><span>ما تغيّر نظامك.</span>">Launch without<br><span>changing your operation.</span></h2></div>
+    <div class="steps">
+      <article class="step reveal"><small>01</small><div class="step-icon">📋</div><h3 data-en="Map your business" data-ar="نرسم نظام شغلك">Map your business</h3><p data-en="Hours, services, slots, capacity, staff, policies, payment rules, tone, menus, and FAQs." data-ar="الساعات، الخدمات، المواعيد، الطاقة، الستاف، السياسات، قواعد الدفع، الأسلوب، المنيو، والأسئلة.">Hours, services, slots, capacity, staff, policies, payment rules, tone, menus, and FAQs.</p></article>
+      <article class="step reveal"><small>02</small><div class="step-icon">🤖</div><h3 data-en="Train Zaki" data-ar="ندرّب زكي">Train Zaki</h3><p data-en="Zaki learns your rules and starts handling realistic guest scenarios." data-ar="زكي يتعلم قواعدك ويتعامل مع سيناريوهات ضيوف حقيقية.">Zaki learns your rules and starts handling realistic guest scenarios.</p></article>
+      <article class="step reveal"><small>03</small><div class="step-icon">🚀</div><h3 data-en="Go live" data-ar="نشتغل">Go live</h3><p data-en="Connect WhatsApp, share your booking link, and watch the dashboard fill up." data-ar="نوصل واتساب، ننشر لينك الحجز، والداشبورد تبدأ تتملي.">Connect WhatsApp, share your booking link, and watch the dashboard fill up.</p></article>
+    </div>
+  </div></section>
+
+  <section id="cta"><div class="cta-box reveal">
+    <div class="tag" style="justify-content:center" data-en="Book a demo" data-ar="احجز ديمو">Book a demo</div>
+    <h2 data-en="Let Zaki handle the next booking." data-ar="خلّي زكي يمسك الحجز الجاي.">Let Zaki handle the next booking.</h2>
+    <p data-en="Send your business details and we will show you how Yalanehgez would work for your bookings, orders, payments, receipts, team, and WhatsApp flow." data-ar="ابعت تفاصيل شغلك ونوريك يلا نحجز هيشتغل إزاي مع الحجوزات والأوردرات والدفع والفواتير والفريق والواتساب عندك.">Send your business details and we will show you how Yalanehgez would work for your bookings, orders, payments, receipts, team, and WhatsApp flow.</p>
+    <div class="hero-ctas" style="justify-content:center"><a class="btn btn-g" href="https://wa.me/201095722660?text=Hi%2C%20I%27d%20like%20a%20free%20demo%20of%20Yalanehgez" target="_blank" rel="noreferrer" data-en="WhatsApp us for a Demo" data-ar="ابعتلنا على واتساب للديمو">WhatsApp us for a Demo</a></div>
+    <div class="note">Prefer email? → <a href="mailto:yalanehgez.eg@gmail.com">yalanehgez.eg@gmail.com</a></div>
+    <div class="note">Or reach us at <a href="https://wa.me/201095722660" target="_blank" rel="noreferrer">+20 10 9572 2660</a> · <a href="https://instagram.com/yalanehgez" target="_blank" rel="noreferrer">@yalanehgez</a></div>
+  </div></section>
+
+  <section id="terms"><div class="privacy">
+    <h2 data-en="Terms and conditions" data-ar="الشروط والأحكام">Terms and conditions</h2>
+    <p><strong>Last updated: May 2026</strong></p>
+    <h3 data-en="Use of service" data-ar="استخدام الخدمة">Use of service</h3>
+    <p data-en="Yalanehgez provides WhatsApp-based booking, appointment, ordering, payment, receipt, reminder, and operations automation for businesses in Egypt. Businesses and customers agree to use the service only for legitimate operational communication." data-ar="يلا نحجز يقدم تشغيل حجوزات ومواعيد وأوردرات ودفع وفواتير وتذكيرات على واتساب للبزنس في مصر. يوافق البزنس والعملاء على استخدام الخدمة فقط للتواصل التشغيلي المشروع.">Yalanehgez provides WhatsApp-based booking, appointment, ordering, payment, receipt, reminder, and operations automation for businesses in Egypt. Businesses and customers agree to use the service only for legitimate operational communication.</p>
+    <h3 data-en="Business responsibility" data-ar="مسؤولية البزنس">Business responsibility</h3>
+    <p data-en="Business operators remain responsible for honouring bookings, appointments, orders, deposits, refunds, payment confirmations, service availability, capacity, pricing, and the accuracy of business information shown to customers." data-ar="إدارة البزنس مسؤولة عن تنفيذ الحجوزات والمواعيد والأوردرات والعربون والاسترجاع وتأكيد الدفع وتوفر الخدمة والطاقة والأسعار ودقة المعلومات المعروضة للعملاء.">Business operators remain responsible for honouring bookings, appointments, orders, deposits, refunds, payment confirmations, service availability, capacity, pricing, and the accuracy of business information shown to customers.</p>
+    <h3 data-en="Payments" data-ar="الدفع">Payments</h3>
+    <p data-en="Yalanehgez may help collect or record InstaPay transfers, Visa payments, deposits, payment screenshots, and receipts. Final payment acceptance, refund handling, and dispute resolution remain the responsibility of the business operator." data-ar="يلا نحجز قد يساعد في تسجيل أو تحصيل تحويلات إنستاباي ومدفوعات فيزا والعربون وصور الدفع والفواتير. قبول الدفع النهائي والاسترجاع وحل النزاعات مسؤولية إدارة البزنس.">Yalanehgez may help collect or record InstaPay transfers, Visa payments, deposits, payment screenshots, and receipts. Final payment acceptance, refund handling, and dispute resolution remain the responsibility of the business operator.</p>
+    <h3 data-en="Service availability" data-ar="إتاحة الخدمة">Service availability</h3>
+    <p data-en="Yalanehgez is designed for high availability, but WhatsApp delivery, Meta systems, internet access, payment providers, AI providers, and other third-party services can occasionally affect response times, payment status, or message delivery." data-ar="يلا نحجز مصمم للعمل بثبات، لكن توصيل واتساب وأنظمة ميتا والإنترنت ومزودي الدفع ومزودي الذكاء الاصطناعي وخدمات الطرف الثالث قد تؤثر أحيانًا على سرعة الرد أو حالة الدفع أو وصول الرسائل.">Yalanehgez is designed for high availability, but WhatsApp delivery, Meta systems, internet access, payment providers, AI providers, and other third-party services can occasionally affect response times, payment status, or message delivery.</p>
+    <h3 data-en="Contact" data-ar="التواصل">Contact</h3>
+    <p><a href="mailto:yalanehgez.eg@gmail.com">yalanehgez.eg@gmail.com</a> · <a href="https://wa.me/201095722660" target="_blank" rel="noreferrer">+20 10 9572 2660</a></p>
+  </div></section>
+
+  <section id="privacy"><div class="privacy">
+    <h2 data-en="Privacy Policy" data-ar="سياسة الخصوصية">Privacy Policy</h2>
+    <p><strong>Last updated: May 2026</strong></p>
+    <h3 data-en="Who we are" data-ar="من نحن">Who we are</h3>
+    <p data-en="Yalanehgez (يلا نحجز) is an AI-powered WhatsApp operations and booking automation service built for businesses in Egypt across hospitality, health, beauty, sports, events, and service sectors." data-ar="يلا نحجز خدمة تشغيل وحجز بالذكاء الاصطناعي على واتساب للبزنس في مصر في الضيافة والصحة والجمال والرياضة والإيفنتات وقطاعات الخدمات.">Yalanehgez (يلا نحجز) is an AI-powered WhatsApp operations and booking automation service built for businesses in Egypt across hospitality, health, beauty, sports, events, and service sectors.</p>
+    <h3 data-en="What data we collect" data-ar="ما البيانات التي نجمعها">What data we collect</h3>
+    <p data-en="When customers interact with a Yalanehgez-powered WhatsApp assistant, we collect information provided during the conversation: name, phone number, booking or appointment details, order details, payment confirmation details, receipt information, notes, and any other information the customer chooses to share." data-ar="عندما يتفاعل العملاء مع مساعد واتساب يعمل بيلا نحجز، نجمع المعلومات التي يرسلونها في المحادثة: الاسم، رقم الهاتف، تفاصيل الحجز أو الموعد، تفاصيل الأوردر، بيانات تأكيد الدفع، بيانات الفاتورة، الملاحظات، وأي معلومات يختار العميل مشاركتها.">When customers interact with a Yalanehgez-powered WhatsApp assistant, we collect information provided during the conversation: name, phone number, booking or appointment details, order details, payment confirmation details, receipt information, notes, and any other information the customer chooses to share.</p>
+    <h3 data-en="How we use it" data-ar="كيف نستخدمها">How we use it</h3>
+    <p data-en="This data is used to process and manage bookings, appointments, orders, reminders, payments, receipts, support messages, and operational reports on behalf of the business. We do not sell or rent customer data." data-ar="تُستخدم هذه البيانات لمعالجة وإدارة الحجوزات والمواعيد والأوردرات والتذكيرات والدفع والفواتير ورسائل الدعم والتقارير التشغيلية نيابة عن البزنس. لا نبيع أو نؤجر بيانات العملاء.">This data is used to process and manage bookings, appointments, orders, reminders, payments, receipts, support messages, and operational reports on behalf of the business. We do not sell or rent customer data.</p>
+    <h3 data-en="Third-party providers" data-ar="مزودو الخدمة">Third-party providers</h3>
+    <p data-en="Yalanehgez may use Meta/WhatsApp infrastructure, AI providers, payment providers, hosting providers, and dashboard tools where necessary to operate the service." data-ar="قد يستخدم يلا نحجز بنية ميتا/واتساب ومزودي الذكاء الاصطناعي ومزودي الدفع والاستضافة وأدوات الداشبورد عند الحاجة لتشغيل الخدمة.">Yalanehgez may use Meta/WhatsApp infrastructure, AI providers, payment providers, hosting providers, and dashboard tools where necessary to operate the service.</p>
+    <h3 data-en="WhatsApp and Meta" data-ar="واتساب وميتا">WhatsApp and Meta</h3>
+    <p data-en="Yalanehgez uses the official Meta WhatsApp Business Cloud API. By messaging a Yalanehgez-powered number, users are also subject to WhatsApp's Privacy Policy and Meta's Business and Commerce Policies." data-ar="يستخدم يلا نحجز WhatsApp Business Cloud API الرسمي من ميتا. عند مراسلة رقم يعمل بيلا نحجز، يخضع المستخدمون أيضًا لسياسة خصوصية واتساب وسياسات ميتا للأعمال والتجارة.">Yalanehgez uses the official Meta WhatsApp Business Cloud API. By messaging a Yalanehgez-powered number, users are also subject to WhatsApp's Privacy Policy and Meta's Business and Commerce Policies.</p>
+    <h3 data-en="Opt-out" data-ar="إلغاء الاشتراك">Opt-out</h3>
+    <p data-en="Customers can reply STOP to unsubscribe from promotional messages. They may still receive transactional messages related to active bookings, appointments, orders, payments, or receipts." data-ar="يمكن للعملاء إرسال STOP لإلغاء الرسائل الترويجية. قد يستمر إرسال رسائل تشغيلية تخص حجوزات أو مواعيد أو أوردرات أو دفع أو فواتير نشطة.">Customers can reply STOP to unsubscribe from promotional messages. They may still receive transactional messages related to active bookings, appointments, orders, payments, or receipts.</p>
+    <h3 data-en="Data retention" data-ar="الاحتفاظ بالبيانات">Data retention</h3>
+    <p data-en="Records are retained for as long as the business operator requires for operational, support, reporting, and compliance purposes, unless deletion is requested and legally possible." data-ar="يتم الاحتفاظ بالسجلات طالما يحتاجها البزنس لأغراض التشغيل والدعم والتقارير والامتثال، ما لم يُطلب حذفها وكان ذلك ممكنًا قانونيًا.">Records are retained for as long as the business operator requires for operational, support, reporting, and compliance purposes, unless deletion is requested and legally possible.</p>
+    <h3 data-en="Contact" data-ar="التواصل">Contact</h3>
+    <p>For privacy-related questions, contact us at <a href="mailto:yalanehgez.eg@gmail.com">yalanehgez.eg@gmail.com</a> or via WhatsApp at <a href="https://wa.me/201095722660" target="_blank" rel="noreferrer">+20 10 9572 2660</a>.</p>
+  </div></section>
+
+  <footer><div class="foot">
+    <div><div class="foot-brand">Yala<span>Nehgez</span> · يلا نحجز</div><div class="copy">© 2026 · AI booking, order, payment, and receipt operations on WhatsApp · Egypt · <a href="mailto:yalanehgez.eg@gmail.com">yalanehgez.eg@gmail.com</a></div></div>
+    <div class="foot-links"><a href="#zaki" data-en="Zaki" data-ar="زكي">Zaki</a><a href="#dashboard" data-en="Dashboard" data-ar="الداشبورد">Dashboard</a><a href="#terms" data-en="Terms" data-ar="الشروط">Terms</a><a href="#privacy" data-en="Privacy Policy" data-ar="سياسة الخصوصية">Privacy Policy</a><a href="https://wa.me/201095722660" target="_blank" rel="noreferrer">WhatsApp</a><a class="ig" href="https://instagram.com/yalanehgez" target="_blank" rel="noreferrer">Instagram @yalanehgez</a></div>
+  </div></footer>
+
+  <script>
+    const root = document.documentElement;
+    const body = document.body;
+    const nav = document.getElementById("nav");
+    const langBtn = document.getElementById("langBtn");
+    const modeBtn = document.getElementById("modeBtn");
+    let lang = "en";
+
+    function setLanguage(next) {
+      lang = next;
+      body.classList.toggle("ar", lang === "ar");
+      document.documentElement.lang = lang;
+      document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+      document.querySelectorAll("[data-en][data-ar]").forEach((el) => {
+        el.innerHTML = el.dataset[lang];
+      });
+      langBtn.querySelector("span").textContent = lang === "ar" ? "English" : "العربية";
+    }
+
+    langBtn.addEventListener("click", () => setLanguage(lang === "en" ? "ar" : "en"));
+    modeBtn.addEventListener("click", () => {
+      root.classList.toggle("light");
+      modeBtn.textContent = root.classList.contains("light") ? "🌙" : "☀️";
+    });
+    window.addEventListener("scroll", () => nav.classList.toggle("stuck", window.scrollY > 20), { passive: true });
+
+    document.querySelectorAll(".tab").forEach((button) => {
+      button.addEventListener("click", () => {
+        document.querySelectorAll(".tab").forEach((tab) => tab.classList.remove("active"));
+        document.querySelectorAll(".tab-panel").forEach((panel) => panel.classList.remove("active"));
+        button.classList.add("active");
+        document.getElementById(`tab-${button.dataset.tab}`).classList.add("active");
+      });
+    });
+
+    const zakiInput = document.getElementById("zakiInput");
+    const zakiSend = document.getElementById("zakiSend");
+    const zakiBody = document.querySelector(".wa-body");
+    const initialZakiDemo = zakiBody.innerHTML;
+    const exactDemoReplies = {
+      "simulate booking": { display: "Hi Zaki, I want to book tomorrow at 8 for 4 people.", text: "Available. I can hold tomorrow at 8:00 PM for 4 people. Please send the booker name and phone number, then I can confirm the booking and request a deposit if needed.", actions: ["Booker: Ali Marwan", "Add deposit", "Send reminder"] },
+      "Can I pay by Visa and get a receipt?": { display: "Can I pay by Visa and get a receipt?", text: "Yes. I can send a Visa payment link, wait for payment confirmation, update the dashboard, and send an itemised receipt back on WhatsApp.", actions: ["Send Visa link", "Use InstaPay", "Show receipt"] },
+      "Confirm 8:00 PM": { text: "Confirmed. The 8:00 PM slot is now reserved, the customer gets a confirmation page, and your dashboard updates instantly.", actions: ["Modify booking", "Cancel booking"] },
+      "Booker: Ali Marwan": { display: "Ali Marwan · 01012345678", text: "Thanks Ali. I saved your details and confirmed the slot for tomorrow at 8:00 PM for 4 people. Would you like to pay the deposit now?", actions: ["Add deposit", "Send reminder"] },
+      "Add deposit": { text: "Deposit rule added. I will ask for payment before the hold expires and mark the booking as deposit-confirmed once payment is approved.", actions: ["Send Visa link", "Use InstaPay"] },
+      "Send reminder": { text: "Reminders scheduled: one message the day before and another 2 hours before the booking. If the guest replies, I handle changes automatically.", actions: ["Preview reminder"] },
+      "Send Visa link": { text: "Visa link sent. I will watch for confirmation, attach the payment to this booking, and send the receipt when it clears.", actions: ["Confirm paid", "Show receipt"] },
+      "Use InstaPay": { text: "InstaPay selected. I will send transfer instructions, ask for the screenshot, and forward it to your team for approval.", actions: ["Confirm transfer", "Reject transfer"] },
+      "Show receipt": { text: "Receipt preview: Booking deposit — EGP 500. Paid by Visa. Customer name, booking time, and receipt ID are included automatically.", actions: ["Send receipt"] },
+      "Confirm paid": { text: "Payment confirmed. The booking is marked paid, the receipt was sent to the customer, and the dashboard payment status is updated.", actions: ["Send receipt"] },
+      "Send receipt": { text: "Receipt sent on WhatsApp. The customer gets a clean itemised receipt and your team keeps the full record in the dashboard.", actions: [] },
+      "Confirm transfer": { text: "Transfer confirmed. I notified the customer, locked in the booking, and saved the proof of payment for your team.", actions: ["Send receipt"] },
+      "Reject transfer": { text: "Transfer rejected. I will politely ask the customer to resend the correct screenshot or choose Visa instead.", actions: ["Send Visa link"] },
+      "Modify": { text: "Sure. I can change the time, party size, service, or notes, then send the updated confirmation to the customer.", actions: ["Change time", "Change size"] },
+      "Cancel": { text: "Cancelled. I would notify the customer, update the dashboard, and offer the open slot to the waitlist if one exists.", actions: ["Notify waitlist"] },
+      "Modify booking": { text: "What should change? I can update time, size, service, staff member, or customer notes without losing the original booking history.", actions: ["Change time", "Change size"] },
+      "Cancel booking": { text: "Booking cancelled. The customer is notified, the slot reopens, and I can message the waitlist automatically.", actions: ["Notify waitlist"] },
+      "Change time": { text: "Time changed. I found 8:30 PM available, updated the booking, and sent the new confirmation page.", actions: ["Send reminder"] },
+      "Change size": { text: "Party size updated. I checked capacity, adjusted the booking, and flagged it for deposit if the group is large.", actions: ["Add deposit"] },
+      "Notify waitlist": { text: "Waitlist notified. I messaged the next matching customer and gave them a limited window to claim the open slot.", actions: [] },
+      "Preview reminder": { text: "Reminder preview: Hi Ali, this is Zaki confirming your booking tomorrow at 8:00 PM. Reply Modify or Cancel if anything changes.", actions: [] },
+      "Book": { display: "Simulate a booking", text: "Booking simulation started. I found tomorrow at 8:00 PM for 4 people and can complete the reservation in under a minute.", actions: ["Confirm 8:00 PM", "Add deposit"] },
+      "Pay": { display: "Simulate payment", text: "Payment simulation started. I can collect by Visa or InstaPay, verify it, and send the receipt automatically.", actions: ["Send Visa link", "Use InstaPay"] },
+      "Reactivate": { display: "Reactivate guests", text: "I found 12 customers who have not visited in 30+ days. I can send a personalised WhatsApp and skip anyone outside the allowed window.", actions: ["Preview message"] },
+      "Preview message": { text: "Preview: We miss you at Yalanehgez. Want me to reserve your usual spot this weekend?", actions: ["Send to 30+ days"] },
+      "Send to 30+ days": { text: "Reactivation sent to eligible customers. I skipped contacts outside the WhatsApp messaging window and logged the campaign.", actions: [] },
+      "Notify manager": { text: "Manager notified with the full chat context and urgency flag. The guest does not need to repeat anything.", actions: ["Open summary"] },
+      "Mark urgent": { text: "Marked urgent. I pushed this to the top of the team queue and paused automation until a person replies.", actions: ["Open summary"] },
+      "Open summary": { text: "Summary opened: customer issue, booking details, last messages, sentiment, and suggested next action are ready for the manager.", actions: [] },
+      "See pricing factors": { text: "Pricing factors: booking volume, payment collection, ordering, dashboard users, custom rules, integrations, and how many locations you want to run through Zaki.", actions: ["Book demo for quote"] },
+      "Book demo for quote": { text: "Perfect. The demo would map your exact workflow first, then we can give you a clear quote instead of a generic package that does not fit.", actions: [] },
+      "Show industries": { text: "Zaki works anywhere bookings matter: restaurants, clinics, salons, spas, gyms, sports courts, beach clubs, hotels, resorts, events, and private venues.", actions: ["Show clinic example", "Show salon example"] },
+      "Show clinic example": { text: "Clinic example: patients book appointments, get reminders, reschedule on WhatsApp, and your receptionist sees everything in the dashboard.", actions: ["Show reminders"] },
+      "Show salon example": { text: "Salon example: clients choose service, preferred stylist, time, deposit if needed, and receive reminders plus receipts automatically.", actions: ["Show payments"] },
+      "Setup checklist": { text: "Setup checklist: business hours, services, capacity, booking rules, FAQs, payment methods, WhatsApp number, dashboard users, and brand tone.", actions: ["Launch timeline"] },
+      "Launch timeline": { text: "Typical launch flow: collect details, configure Zaki, connect WhatsApp, test bookings and payments, train your team, then go live.", actions: [] },
+      "Dashboard features": { text: "Dashboard features: live bookings, customer profiles, staff roles, payments, orders, exports, Zaki settings, and conversation history.", actions: ["Staff roles"] },
+      "Staff roles": { text: "Roles can separate owner, manager, host, kitchen, and front desk access so each person sees only what they need.", actions: [] },
+      "WhatsApp setup": { text: "WhatsApp setup connects your business number through the official API flow, then Zaki handles conversations behind the scenes.", actions: ["Message windows"] },
+      "Message windows": { text: "WhatsApp has messaging windows for outbound/promotional messages. Zaki respects those rules and skips people who cannot be messaged.", actions: [] },
+      "Show reminders": { text: "Reminder flow: confirmation after booking, day-before reminder, 2-hour reminder, and Modify or Cancel buttons so the slot can be saved early.", actions: ["No-show scoring"] },
+      "No-show scoring": { text: "No-show scoring can flag risky bookings like first-timers, large groups, and peak-night slots, then ask for a deposit automatically.", actions: ["Show payments"] },
+      "Data policy": { text: "Data is used to run the booking operation for your business: confirmations, reminders, dashboard records, payments, receipts, and support context.", actions: ["Opt-out rules"] },
+      "Opt-out rules": { text: "Guests can opt out of promotional messages. Booking confirmations and reminders still work for active reservations.", actions: [] },
+      "Show payments": { text: "Payments can run through Visa links or InstaPay instructions. Once confirmed, Zaki updates the booking and sends a receipt.", actions: ["Send Visa link", "Use InstaPay"] },
+      "Contact options": { text: "You can start with WhatsApp for the fastest demo request, or email yalanehgez.eg@gmail.com if you prefer sending details first.", actions: ["Book demo for quote"] }
+    };
+    const demoReplies = [
+      {
+        match: /(price|pricing|cost|how much|monthly|subscription|quote|package|سعر|بكام|تكلفة|اشتراك)/i,
+        text: "Pricing depends on the business type, booking volume, and whether you need payments, ordering, dashboard roles, or custom setup. The best next step is a short personalised demo so we can price it around your actual workflow.",
+        actions: ["See pricing factors", "Book demo for quote"]
+      },
+      {
+        match: /(restaurant|clinic|salon|spa|gym|sport|fitness|court|doctor|medical|beach|resort|hotel|industry|business|مطعم|عيادة|صالون|جيم|رياضة|فندق|بيتش)/i,
+        text: "Yalanehgez is not only for restaurants. I can run bookings and appointments for restaurants, clinics, salons, spas, sports courts, fitness studios, beach clubs, resorts, hotels, and any service business that depends on scheduled visits.",
+        actions: ["Show industries", "Show clinic example", "Show salon example"]
+      },
+      {
+        match: /(setup|start|install|launch|go live|how long|onboard|connect|تجهيز|تشغيل|ابدأ|يشتغل|ربط)/i,
+        text: "Setup is handled for you. We collect your services, hours, capacity, rules, FAQs, tone, payment options, and team roles, then connect WhatsApp and test the full flow before launch.",
+        actions: ["Setup checklist", "Launch timeline"]
+      },
+      {
+        match: /(dashboard|admin|panel|staff|roles|owner|manager|host|kitchen|floor plan|داشبورد|لوحة|ستاف|صلاحيات|ادارة|إدارة)/i,
+        text: "Yes. Your team gets a live dashboard with bookings, payments, orders, staff roles, customer profiles, exports, Zaki settings, and operational views. WhatsApp is for quick control; the dashboard is for full visibility.",
+        actions: ["Dashboard features", "Staff roles"]
+      },
+      {
+        match: /(whatsapp api|official|meta|number|business|واتساب|رقم|ميتا|رسمي)/i,
+        text: "Yalanehgez uses the official WhatsApp Business API flow. Customers message the business normally, while Zaki handles the booking logic, confirmations, reminders, payments, and escalation rules in the background.",
+        actions: ["WhatsApp setup", "Message windows"]
+      },
+      {
+        match: /(reminder|no-show|noshow|waitlist|late|forget|تذكير|نسي|غياب|ويت ليست|انتظار)/i,
+        text: "I reduce no-shows with automatic reminders, deposit requests for risky bookings, easy Modify or Cancel buttons, and waitlist refill when a slot opens. The goal is fewer empty slots and less manual chasing.",
+        actions: ["Show reminders", "No-show scoring"]
+      },
+      {
+        match: /(privacy|data|secure|security|gdpr|delete|customer data|بيانات|خصوصية|امان|أمان)/i,
+        text: "Customer data is used to operate the booking for your business: confirmations, reminders, payments, receipts, and dashboard records. Guests can opt out of promos, and your team keeps control of the customer relationship.",
+        actions: ["Data policy", "Opt-out rules"]
+      },
+      {
+        match: /(demo|call|contact|email|whatsapp us|talk|تواصل|ديمو|اتصل|ايميل|إيميل)/i,
+        text: "You can book a free personalised demo from this page. We will walk through your exact workflow and show how Zaki would handle bookings, payments, reminders, and your dashboard.",
+        actions: ["Contact options", "Book demo for quote"]
+      },
+      {
+        match: /(simulate booking|book|appointment|reservation|tomorrow|today|حجز|ميعاد|موعد|بكره|النهارده)/i,
+        text: "Let’s simulate it. I found availability tomorrow at 8:00 PM. I can hold the slot, collect the customer name and phone, request a deposit if needed, then send confirmation and reminders automatically.",
+        actions: ["Confirm 8:00 PM", "Add deposit", "Send reminder"]
+      },
+      {
+        match: /(pay|payment|visa|instapay|deposit|receipt|فاتورة|دفع|عربون|فيزا|انستاباي|إنستاباي)/i,
+        text: "Yes — I can take a deposit or full payment by InstaPay or Visa. Once it is confirmed, I send the customer an itemised WhatsApp receipt and update the dashboard automatically.",
+        actions: ["Send Visa link", "Use InstaPay", "Show receipt"]
+      },
+      {
+        match: /(order|menu|drink|food|receipt|اوردر|منيو|طلب|اكل|أكل)/i,
+        text: "Of course. I can take the order conversationally, confirm quantities and notes, route it to the team, then send a clean receipt after payment.",
+        actions: ["View menu", "Add notes", "Pay now"]
+      },
+      {
+        match: /(cancel|modify|change|reschedule|الغاء|إلغاء|تعديل|غير|غيّر)/i,
+        text: "No problem. I can modify the time, change the party size, or cancel the booking. If a slot opens up, I can offer it to the waitlist automatically.",
+        actions: ["Change time", "Change size", "Cancel booking"]
+      },
+      {
+        match: /(angry|problem|manager|human|frustrated|complaint|مشكلة|مدير|زعلان|مضايق|حد يرد)/i,
+        text: "I understand. This needs a human touch, so I’m escalating it to the team now with the full conversation context. You will not need to repeat yourself.",
+        actions: ["Notify manager", "Mark urgent"]
+      },
+      {
+        match: /(reactivation|inactive|lapsed|old guests|رجع|قدام|غابوا)/i,
+        text: "I can find customers who have not visited recently, write a warm personalised WhatsApp, and skip anyone outside the allowed messaging window.",
+        actions: ["Send to 30+ days", "Preview message"]
+      },
+      {
+        match: /(franco|arabic|english|عربي|انجليزي|إنجليزي|فرانكو)/i,
+        text: "Yes. Customers can type عربي, English, Franco, or a mix in the same sentence. I understand the intent and reply naturally in the best language.",
+        actions: ["Try Arabic", "Try Franco"]
+      }
+    ];
+
+    function demoTime() {
+      return new Date().toLocaleTimeString([], { hour: "numeric", minute: "2-digit" });
+    }
+
+    function addDemoMessage(text, who = "out", actions = []) {
+      const msg = document.createElement("div");
+      msg.className = `msg ${who}`;
+      if (who === "zaki") {
+        const label = document.createElement("div");
+        label.className = "label";
+        label.textContent = "Zaki";
+        msg.append(label, document.createTextNode(text));
+        if (actions.length) {
+          const actionWrap = document.createElement("div");
+          actionWrap.className = "reply-actions";
+          actions.forEach((action) => {
+            const button = document.createElement("button");
+            button.className = "reply-action";
+            button.type = "button";
+            button.textContent = action;
+            button.dataset.demo = action;
+            actionWrap.appendChild(button);
+          });
+          msg.appendChild(actionWrap);
+        }
+      } else {
+        const label = document.createElement("div");
+        label.className = "label";
+        label.textContent = "Booker";
+        msg.append(label, document.createTextNode(text));
+      }
+      const time = document.createElement("div");
+      time.className = "time";
+      time.textContent = who === "out" ? `${demoTime()} ✓✓` : demoTime();
+      msg.appendChild(time);
+      zakiBody.appendChild(msg);
+      zakiBody.scrollTop = zakiBody.scrollHeight;
+    }
+
+    function getDemoReply(text) {
+      if (exactDemoReplies[text]) return exactDemoReplies[text];
+      const found = demoReplies.find((reply) => reply.match.test(text));
+      if (found) return found;
+      if (/send visa link|use instapay|show receipt|pay now|pay deposit/i.test(text)) {
+        return {
+          text: "Done. I would send the right payment step, wait for confirmation, then attach the receipt to this chat and update the dashboard.",
+          actions: ["Confirm paid", "Send receipt"]
+        };
+      }
+      if (/confirm 8:00 pm|add deposit|send reminder/i.test(text)) {
+        return {
+          text: "Done. Booking confirmed for tomorrow at 8:00 PM. Deposit rule applied, confirmation page generated, and reminders scheduled.",
+          actions: ["Modify", "Cancel"]
+        };
+      }
+      if (/notify manager|mark urgent|handover/i.test(text)) {
+        return {
+          text: "Escalated. The manager gets the customer name, number, full chat summary, and suggested next action immediately.",
+          actions: ["Open summary"]
+        };
+      }
+      return {
+        text: "Got it. I can help with bookings, appointments, orders, payments, receipts, reminders, cancellations, reactivation, and team handover. Try one of the scenario buttons below.",
+        actions: ["Book", "Pay", "Reactivate"]
+      };
+    }
+
+    function showTypingThenReply(text) {
+      const typing = document.createElement("div");
+      typing.className = "msg zaki typing";
+      typing.innerHTML = "<span></span><span></span><span></span>";
+      zakiBody.appendChild(typing);
+      zakiBody.scrollTop = zakiBody.scrollHeight;
+      setTimeout(() => {
+        typing.remove();
+        const reply = getDemoReply(text);
+        addDemoMessage(reply.text, "zaki", reply.actions || []);
+      }, 700);
+    }
+
+    function sendDemoMessage() {
+      const text = zakiInput.innerText.replace(/\s+/g, " ").trim();
+      if (!text) return;
+      zakiInput.textContent = "";
+      addDemoMessage(text, "out");
+      showTypingThenReply(text);
+    }
+
+    function resetZakiDemo() {
+      zakiBody.innerHTML = initialZakiDemo;
+      zakiInput.textContent = "";
+      zakiBody.scrollTop = 0;
+    }
+
+    function sendPresetDemo(text) {
+      zakiInput.textContent = "";
+      const exact = exactDemoReplies[text];
+      addDemoMessage(exact?.display || text, "out");
+      showTypingThenReply(text);
+    }
+
+    zakiSend.addEventListener("click", sendDemoMessage);
+    zakiInput.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" && !event.shiftKey) {
+        event.preventDefault();
+        sendDemoMessage();
+      }
+    });
+    zakiInput.addEventListener("paste", (event) => {
+      event.preventDefault();
+      const text = event.clipboardData.getData("text/plain");
+      document.execCommand("insertText", false, text);
+    });
+    zakiBody.addEventListener("click", (event) => {
+      const button = event.target.closest(".mini-btn, .reply-action");
+      if (!button) return;
+      const text = button.textContent.trim();
+      addDemoMessage(text, "out");
+      showTypingThenReply(text);
+    });
+    window.addEventListener("pageshow", (event) => {
+      if (event.persisted) resetZakiDemo();
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+  </script>
+</body>
+</html>
+
